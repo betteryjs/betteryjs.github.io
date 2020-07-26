@@ -1,4 +1,7 @@
-
+/*
+<script type="text/javascript" src="\js\snow.js"></script>
+layout.ejs
+*/
 
 /*样式一*/
 (function($){
