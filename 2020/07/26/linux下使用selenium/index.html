@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="hello hexo, 黎北辰">
+    <meta name="keywords" content="linux下使用selenium, 黎北辰">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>hello hexo | 黎北辰</title>
+    <title>linux下使用selenium | 黎北辰</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/source/images/hello%20hexo.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/source/images/linux%E4%B8%8B%E4%BD%BF%E7%94%A8selenium.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">hello hexo</h1>
+                    <h1 class="description center-align post-title">linux下使用selenium</h1>
                 </div>
             </div>
         </div>
@@ -380,7 +380,31 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="安装最新的-Google-Chrome"><a href="#安装最新的-Google-Chrome" class="headerlink" title="安装最新的 Google Chrome"></a>安装最新的 Google Chrome</h2><pre class=" language-sh"><code class="language-sh">yum install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm</code></pre>
+<h2 id="安装必要的库"><a href="#安装必要的库" class="headerlink" title="安装必要的库"></a>安装必要的库</h2><pre class=" language-shell"><code class="language-shell">yum install mesa-libOSMesa-devel gnu-free-sans-fonts wqy-zenhei-fonts</code></pre>
+<h2 id="查看谷歌浏览器版本"><a href="#查看谷歌浏览器版本" class="headerlink" title="查看谷歌浏览器版本"></a>查看谷歌浏览器版本</h2><pre class=" language-shell"><code class="language-shell">google-chrome --version </code></pre>
+<h2 id="安装-chromedriver"><a href="#安装-chromedriver" class="headerlink" title="安装 chromedriver"></a>安装 chromedriver</h2><pre class=" language-sh"><code class="language-sh">wget http://npm.taobao.org/mirrors/chromedriver/2.41/chromedriver_linux64.zip
+
+unzip chromedriver_linux64.zip
+
+chmod +x /usr/bin/chromedriver</code></pre>
+<h2 id="加入path"><a href="#加入path" class="headerlink" title="加入path"></a>加入path</h2><pre class=" language-shell"><code class="language-shell">vim .bashrc
+在里面加入：
+export PATH="$PATH:/usr/bin/chromedriver"
+source ~/.bashrc</code></pre>
+<h2 id="查看path"><a href="#查看path" class="headerlink" title="查看path"></a>查看<code>path</code></h2><pre class=" language-shell"><code class="language-shell">$PATH</code></pre>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> selenium <span class="token keyword">import</span> webdriver
+<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>chrome<span class="token punctuation">.</span>options <span class="token keyword">import</span> Options
+chrome_options <span class="token operator">=</span> Options<span class="token punctuation">(</span><span class="token punctuation">)</span>
+chrome_options<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--no-sandbox'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 参数是让Chrome在root权限下跑</span>
+chrome_options<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--disable-dev-shm-usage'</span><span class="token punctuation">)</span>
+chrome_options<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--headless'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 参数是不用打开图形界面</span>
+driver <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Chrome<span class="token punctuation">(</span>chrome_options<span class="token operator">=</span>chrome_options<span class="token punctuation">)</span>
+
+driver<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"https://www.baidu.com"</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>browser<span class="token punctuation">.</span>page_source<span class="token punctuation">)</span></code></pre>
+
             </div>
             <hr/>
 
@@ -405,7 +429,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/07/26/hello-hexo/">http://yoursite.com/2020/07/26/hello-hexo/</a>
+                    <a href="http://yoursite.com/2020/07/26/linux%E4%B8%8B%E4%BD%BF%E7%94%A8selenium/">http://yoursite.com/2020/07/26/linux%E4%B8%8B%E4%BD%BF%E7%94%A8selenium/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -643,18 +667,18 @@
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2020/07/26/hello-hexo/">
+                <a href="/2020/07/26/linux%E4%B8%8B%E4%BD%BF%E7%94%A8selenium/">
                     <div class="card-image">
                         
-                        <img src="/source/images/hello%20hexo.jpg" class="responsive-img" alt="hello hexo">
+                        <img src="/source/images/linux%E4%B8%8B%E4%BD%BF%E7%94%A8selenium.jpg" class="responsive-img" alt="linux下使用selenium">
                         
-                        <span class="card-title">hello hexo</span>
+                        <span class="card-title">linux下使用selenium</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要
+                            本篇文章将为你介绍如何在linux下下载安装selenium
                         
                     </div>
                     <div class="publish-info">
