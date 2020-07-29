@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="linux下使用selenium, 黎北辰">
+    <meta name="keywords" content="screen管理会话, 黎北辰">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>linux下使用selenium | 黎北辰</title>
+    <title>screen管理会话 | 黎北辰</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/images/linux%E4%B8%8B%E4%BD%BF%E7%94%A8selenium.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">linux下使用selenium</h1>
+                    <h1 class="description center-align post-title">screen管理会话</h1>
                 </div>
             </div>
         </div>
@@ -430,10 +430,6 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Python/">
-                                <span class="chip bg-color">Python</span>
-                            </a>
-                        
                             <a href="/tags/Linux/">
                                 <span class="chip bg-color">Linux</span>
                             </a>
@@ -446,8 +442,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Python/" class="post-category">
-                                Python
+                            <a href="/categories/Linux/" class="post-category">
+                                Linux
                             </a>
                         
                     </div>
@@ -459,7 +455,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-07-26
+                    2020-07-28
                 </div>
                 
 
@@ -468,7 +464,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    157
+                    1.3k
                 </div>
                 
 
@@ -485,31 +481,47 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="安装最新的-Google-Chrome"><a href="#安装最新的-Google-Chrome" class="headerlink" title="安装最新的 Google Chrome"></a>安装最新的 Google Chrome</h2><pre class=" language-sh"><code class="language-sh">yum install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm</code></pre>
-<h2 id="安装必要的库"><a href="#安装必要的库" class="headerlink" title="安装必要的库"></a>安装必要的库</h2><pre class=" language-shell"><code class="language-shell">yum install mesa-libOSMesa-devel gnu-free-sans-fonts wqy-zenhei-fonts</code></pre>
-<h2 id="查看谷歌浏览器版本"><a href="#查看谷歌浏览器版本" class="headerlink" title="查看谷歌浏览器版本"></a>查看谷歌浏览器版本</h2><pre class=" language-shell"><code class="language-shell">google-chrome --version </code></pre>
-<h2 id="安装-chromedriver"><a href="#安装-chromedriver" class="headerlink" title="安装 chromedriver"></a>安装 chromedriver</h2><pre class=" language-sh"><code class="language-sh">wget http://npm.taobao.org/mirrors/chromedriver/2.41/chromedriver_linux64.zip
+                <h2 id="开始使用Screen"><a href="#开始使用Screen" class="headerlink" title="开始使用Screen"></a>开始使用Screen</h2><p>简单来说，Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器。Screen中有会话的概念，用户可以在一个screen会话中创建多个screen窗口，在每一个screen窗口中就像操作一个真实的telnet/SSH连接窗口那样。在screen中创建一个新的窗口有这样几种方式：</p>
+<p>1．直接在命令行键入screen命令</p>
+<pre><code>[root@tivf06 ~]# screen</code></pre><p>Screen将创建一个执行shell的全屏窗口。你可以执行任意shell程序，就像在ssh窗口中那样。在该窗口中键入exit退出该窗口，如果这是该screen会话的唯一窗口，该screen会话退出，否则screen自动切换到前一个窗口。</p>
+<p>2．Screen命令后跟你要执行的程序。</p>
+<pre><code>[root@tivf06 ~]# screen vi test.c</code></pre><p>Screen创建一个执行vi test.c的单窗口会话，退出vi将退出该窗口/会话。</p>
+<p>3．以上两种方式都创建新的screen会话。我们还可以在一个已有screen会话中创建新的窗口。在当前screen窗口中键入<code>C-a c</code>，即Ctrl键+a键，之后再按下c键，screen 在该会话内生成一个新的窗口并切换到该窗口。</p>
+<p>screen还有更高级的功能。你可以不中断screen窗口中程序的运行而暂时断开（detach）screen会话，并在随后时间重新连接（attach）该会话，重新控制各窗口中运行的程序。例如，我们打开一个screen窗口编辑/tmp/abc文件：</p>
+<pre><code>[root@tivf06 ~]# screen vi /tmp/abc</code></pre><p>之后我们想暂时退出做点别的事情，比如出去散散步，那么在screen窗口键入<code>C-a d</code>，Screen会给出detached提示：</p>
+<h5 id="暂时中断会话"><a href="#暂时中断会话" class="headerlink" title="暂时中断会话"></a>暂时中断会话</h5><p><img src="vi.jpg" alt="暂时中断会话"></p>
+<p>半个小时之后回来了，找到该screen会话：</p>
+<pre><code>[root@tivf06 ~]# screen -ls``There is a screen on:``    ``16582.pts-1.tivf06   (Detached)``1 Socket in /tmp/screens/S-root.</code></pre><p>重新连接会话：</p>
+<pre><code>[root@tivf06 ~]# screen -r 16582</code></pre><p>看看出现什么了，太棒了，一切都在。继续干吧。</p>
+<p>你可能注意到给screen发送命令使用了特殊的键组合C-a。这是因为我们在键盘上键入的信息是直接发送给当前screen窗口，必须用其他方式向screen窗口管理器发出命令，默认情况下，screen接收以C-a开始的命令。这种命令形式在screen中叫做键绑定（key binding），C-a叫做命令字符（command character）。</p>
+<p>可以通过<code>C-a ?</code>来查看所有的键绑定，常用的键绑定有：</p>
+<pre><code>C-a ?     显示所有键绑定信息
+C-a w显示所有窗口列表
+C-a C-a切换到之前显示的窗口
+C-a c创建一个新的运行shell的窗口并切换到该窗口
+C-a n切换到下一个窗口
+C-a p切换到前一个窗口(与C-a n相对)
+C-a 0..9切换到窗口0..9
+C-a a发送 C-a到当前窗口
+C-a d暂时断开screen会话
+C-a k杀掉当前窗口
+C-a [进入拷贝/回滚模式</code></pre><h2 id="Screen常用选项"><a href="#Screen常用选项" class="headerlink" title="Screen常用选项"></a>Screen常用选项</h2><p>使用键绑定C-a ?命令可以看到, 默认的命令字符（Command key）为C-a，转义C-a（literal ^a）的字符为a：</p>
+<h5 id="Screen-常用选项"><a href="#Screen-常用选项" class="headerlink" title="Screen 常用选项"></a>Screen 常用选项</h5><p><img src="keybindings.jpg" alt="Screen 常用选项"></p>
+<p>因为screen把C-a看作是screen命令的开始，所以如果你想要screen窗口接收到C-a字符，就要输入C-a a。Screen也允许你使用-e选项设置自己的命令字符和转义字符，其格式为：</p>
+<p>-exy x为命令字符，y为转义命令字符的字符</p>
+<p>下面命令启动的screen会话指定了命令字符为C-t，转义C-t的字符为t，通过C-t ?命令可以看到该变化。</p>
+<pre><code>[root@tivf18 root]# screen -e^tt</code></pre><h5 id="自定义命令字符和转义字符"><a href="#自定义命令字符和转义字符" class="headerlink" title="自定义命令字符和转义字符"></a>自定义命令字符和转义字符</h5><p><img src="newkeybinding.jpg" alt="自定义命令字符和转义字符"></p>
+<h2 id="管理你的远程会话"><a href="#管理你的远程会话" class="headerlink" title="管理你的远程会话"></a>管理你的远程会话</h2><p>先来看看如何使用screen解决SIGHUP问题，比如现在我们要ftp传输一个大文件。如果按老的办法，SSH登录到系统，直接ftp命令开始传输，之后。。如果网络速度还可以，恭喜你，不用等太长时间了；如果网络不好，老老实实等着吧，只能传输完毕再断开SSH连接了。让我们使用screen来试试。</p>
+<p>SSH登录到系统，在命令行键入screen。</p>
+<pre><code>[root@tivf18 root]# screen</code></pre><p>在screen shell窗口中输入ftp命令，登录，开始传输。不愿意等了？OK，在窗口中键入C-a d：</p>
+<h5 id="管理你的远程会话-1"><a href="#管理你的远程会话-1" class="headerlink" title="管理你的远程会话"></a>管理你的远程会话</h5><p><img src="ftp.jpg" alt="管理你的远程会话"></p>
+<p>然后。。退出SSH登录？随你怎样，只要别杀掉screen会话。</p>
+<p>是不是很方便？更进一步，其实我们可以利用screen这种功能来管理你的远程会话，保存你所有的工作内容。你是不是每次登录到系统都要开很多窗口，然后每天都要重复打开关闭这些窗口？让screen来帮你“保存”吧，你只需要打开一个ssh窗口，创建需要的screen窗口，退出的时候C-a d“保存”你的工作，下次登录后直接screen -r <screen_pid>就可以了。</p>
+<p>最好能给每个窗口起一个名字，这样好记些。使用C-a A给窗口起名字。使用C-a w可以看到这些窗口名字，可能名字出现的位置不同。使用putty：</p>
+<h5 id="putty"><a href="#putty" class="headerlink" title="putty"></a>putty</h5><p><img src="putty.jpg" alt="putty"></p>
+<p>使用telnet：</p>
+<h5 id="telnet"><a href="#telnet" class="headerlink" title="telnet"></a>telnet</h5><p><img src="telnet.jpg" alt="telnet"></p>
 
-unzip chromedriver_linux64.zip
-mv chromedriver /usr/bin/
-chmod +x /usr/bin/chromedriver</code></pre>
-<h2 id="加入path"><a href="#加入path" class="headerlink" title="加入path"></a>加入path</h2><pre class=" language-shell"><code class="language-shell">vim .bashrc
-在里面加入：
-export PATH="$PATH:/usr/bin/chromedriver"
-source ~/.bashrc</code></pre>
-<h2 id="查看path"><a href="#查看path" class="headerlink" title="查看path"></a>查看<code>path</code></h2><pre class=" language-shell"><code class="language-shell">$PATH</code></pre>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> selenium <span class="token keyword">import</span> webdriver
-<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>chrome<span class="token punctuation">.</span>options <span class="token keyword">import</span> Options
-chrome_options <span class="token operator">=</span> Options<span class="token punctuation">(</span><span class="token punctuation">)</span>
-chrome_options<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--no-sandbox'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 参数是让Chrome在root权限下跑</span>
-chrome_options<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--disable-dev-shm-usage'</span><span class="token punctuation">)</span>
-chrome_options<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--headless'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 参数是不用打开图形界面</span>
-driver <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Chrome<span class="token punctuation">(</span>chrome_options<span class="token operator">=</span>chrome_options<span class="token punctuation">)</span>
-
-driver<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"https://www.baidu.com"</span><span class="token punctuation">)</span>
-
-<span class="token keyword">print</span><span class="token punctuation">(</span>browser<span class="token punctuation">.</span>page_source<span class="token punctuation">)</span></code></pre>
-<img src="test.jpg" style="zoom:25%;" />
             </div>
             <hr/>
 
@@ -534,7 +546,7 @@ driver<span class="token punctuation">.</span>get<span class="token punctuation"
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/07/26/linux%E4%B8%8B%E4%BD%BF%E7%94%A8selenium/">http://yoursite.com/2020/07/26/linux%E4%B8%8B%E4%BD%BF%E7%94%A8selenium/</a>
+                    <a href="http://yoursite.com/2020/07/28/screen%E7%AE%A1%E7%90%86%E4%BC%9A%E8%AF%9D/">http://yoursite.com/2020/07/28/screen%E7%AE%A1%E7%90%86%E4%BC%9A%E8%AF%9D/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -571,10 +583,6 @@ driver<span class="token punctuation">.</span>get<span class="token punctuation"
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/Python/">
-                                    <span class="chip bg-color">Python</span>
-                                </a>
                             
                                 <a href="/tags/Linux/">
                                     <span class="chip bg-color">Linux</span>
@@ -641,9 +649,60 @@ driver<span class="token punctuation">.</span>get<span class="token punctuation"
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/07/28/screen%E7%AE%A1%E7%90%86%E4%BC%9A%E8%AF%9D/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/medias/featureimages/20.jpg" class="responsive-img" alt="screen管理会话">
+                        
+                        <span class="card-title">screen管理会话</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            开始使用Screen简单来说，Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器。Screen中有会话的概念，用户可以在一个screen会话中创建多个screen窗口，在每一个screen窗口中就像操作一个真实的telne
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2020/07/26/Redis/">
                     <div class="card-image">
@@ -665,9 +724,9 @@ Redis.xmind
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-26
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-26
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -685,67 +744,6 @@ Redis.xmind
                     
                     <a href="/tags/Redis/">
                         <span class="chip bg-color">Redis</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/07/26/%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/medias/featureimages/16.jpg" class="responsive-img" alt="线程和进程">
-                        
-                        <span class="card-title">线程和进程</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            线程
-线程（英语：thread）是操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程
-中的实际运作单位。
-
-多线程import threading
-import time
-
-def sing():
-    for i in ra
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-26
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Python/" class="post-category">
-                                    Python
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Python/">
-                        <span class="chip bg-color">Python</span>
-                    </a>
-                    
-                    <a href="/tags/Markdown/">
-                        <span class="chip bg-color">Markdown</span>
                     </a>
                     
                 </div>
