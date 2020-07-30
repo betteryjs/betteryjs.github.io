@@ -468,7 +468,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    157
+                    184
                 </div>
                 
 
@@ -485,10 +485,14 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="安装最新的-Google-Chrome"><a href="#安装最新的-Google-Chrome" class="headerlink" title="安装最新的 Google Chrome"></a>安装最新的 Google Chrome</h2><pre class=" language-sh"><code class="language-sh">yum install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm</code></pre>
+                <h2 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h2><ul>
+<li><code>Centos 7</code></li>
+<li>注意不要使用<code>Centos8</code> 会出现下面的库安装不上的问题</li>
+</ul>
+<h2 id="安装最新的-Google-Chrome"><a href="#安装最新的-Google-Chrome" class="headerlink" title="安装最新的 Google Chrome"></a>安装最新的 Google Chrome</h2><pre class=" language-sh"><code class="language-sh">yum install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm</code></pre>
 <h2 id="安装必要的库"><a href="#安装必要的库" class="headerlink" title="安装必要的库"></a>安装必要的库</h2><pre class=" language-shell"><code class="language-shell">yum install mesa-libOSMesa-devel gnu-free-sans-fonts wqy-zenhei-fonts</code></pre>
 <h2 id="查看谷歌浏览器版本"><a href="#查看谷歌浏览器版本" class="headerlink" title="查看谷歌浏览器版本"></a>查看谷歌浏览器版本</h2><pre class=" language-shell"><code class="language-shell">google-chrome --version </code></pre>
-<h2 id="安装-chromedriver"><a href="#安装-chromedriver" class="headerlink" title="安装 chromedriver"></a>安装 chromedriver</h2><pre class=" language-sh"><code class="language-sh">wget http://npm.taobao.org/mirrors/chromedriver/2.41/chromedriver_linux64.zip
+<h2 id="安装-chromedriver"><a href="#安装-chromedriver" class="headerlink" title="安装 chromedriver"></a>安装 <code>chromedriver</code></h2><pre class=" language-sh"><code class="language-sh">wget http://npm.taobao.org/mirrors/chromedriver/2.41/chromedriver_linux64.zip
 
 unzip chromedriver_linux64.zip
 mv chromedriver /usr/bin/
@@ -509,7 +513,7 @@ driver <span class="token operator">=</span> webdriver<span class="token punctua
 driver<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"https://www.baidu.com"</span><span class="token punctuation">)</span>
 
 <span class="token keyword">print</span><span class="token punctuation">(</span>browser<span class="token punctuation">.</span>page_source<span class="token punctuation">)</span></code></pre>
-<img src="test.jpg" style="zoom:25%;" />
+
             </div>
             <hr/>
 
@@ -656,12 +660,7 @@ driver<span class="token punctuation">.</span>get<span class="token punctuation"
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-
-给出xmind文件地址
-
-Redis.xmind
-
+                            Redis命运学习整理
                         
                     </div>
                     <div class="publish-info">
@@ -1017,10 +1016,6 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             </script>
             
             <br>
-            
-            <span id="icp"><img src="https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/medias/icp.png" style="vertical-align: text-bottom;" />
-                <a href="http://www.beian.miit.gov.cn" target="_blank">陕ICP备20001876号</a>
-            </span>
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
