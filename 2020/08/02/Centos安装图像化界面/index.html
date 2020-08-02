@@ -464,7 +464,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    186
+                    196
                 </div>
                 
 
@@ -484,7 +484,8 @@
                 <h2 id="安装GNOME桌面"><a href="#安装GNOME桌面" class="headerlink" title="安装GNOME桌面"></a>安装GNOME桌面</h2><blockquote>
 <p>时间会稍微长一些，因为要下载大概600M的东西</p>
 </blockquote>
-<pre><code>yum groupinstall &quot;GNOME Desktop&quot; &quot;Graphical Administration Tools&quot;</code></pre><h2 id="安装VNC-Server"><a href="#安装VNC-Server" class="headerlink" title="安装VNC Server"></a>安装VNC Server</h2><pre><code>yum -y install vnc &quot;vnc-server&quot;</code></pre><h2 id="设置vnc-server-密码"><a href="#设置vnc-server-密码" class="headerlink" title="设置vnc server 密码"></a>设置vnc server 密码</h2><pre><code>vncserver</code></pre><blockquote>
+<pre><code>yum install -y  epel-release &amp;&amp; yum -y update
+yum groupinstall &quot;GNOME Desktop&quot; &quot;Graphical Administration Tools&quot;</code></pre><h2 id="安装VNC-Server"><a href="#安装VNC-Server" class="headerlink" title="安装VNC Server"></a>安装VNC Server</h2><pre><code>yum -y install vnc &quot;vnc-server&quot;</code></pre><h2 id="设置vnc-server-密码"><a href="#设置vnc-server-密码" class="headerlink" title="设置vnc server 密码"></a>设置vnc server 密码</h2><pre><code>vncserver</code></pre><blockquote>
 <p>输入两次密码</p>
 </blockquote>
 <h2 id="启动vncserver"><a href="#启动vncserver" class="headerlink" title="启动vncserver"></a>启动vncserver</h2><p>注意这里的<code>:1</code>前面有空格！</p>
