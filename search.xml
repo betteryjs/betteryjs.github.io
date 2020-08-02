@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Centos安装图像化界面</title>
+      <link href="/2020/08/02/Centos%E5%AE%89%E8%A3%85%E5%9B%BE%E5%83%8F%E5%8C%96%E7%95%8C%E9%9D%A2/"/>
+      <url>/2020/08/02/Centos%E5%AE%89%E8%A3%85%E5%9B%BE%E5%83%8F%E5%8C%96%E7%95%8C%E9%9D%A2/</url>
+      
+        <content type="html"><![CDATA[<h2 id="安装GNOME桌面"><a href="#安装GNOME桌面" class="headerlink" title="安装GNOME桌面"></a>安装GNOME桌面</h2><blockquote><p>时间会稍微长一些，因为要下载大概600M的东西</p></blockquote><pre><code>yum groupinstall &quot;GNOME Desktop&quot; &quot;Graphical Administration Tools&quot;</code></pre><h2 id="安装VNC-Server"><a href="#安装VNC-Server" class="headerlink" title="安装VNC Server"></a>安装VNC Server</h2><pre><code>yum -y install vnc &quot;vnc-server&quot;</code></pre><h2 id="设置vnc-server-密码"><a href="#设置vnc-server-密码" class="headerlink" title="设置vnc server 密码"></a>设置vnc server 密码</h2><pre><code>vncserver</code></pre><blockquote><p>输入两次密码</p></blockquote><h2 id="启动vncserver"><a href="#启动vncserver" class="headerlink" title="启动vncserver"></a>启动vncserver</h2><p>注意这里的<code>:1</code>前面有空格！</p><pre><code>vncserver :1</code></pre><h2 id="查看并在云服务器后台开方端口"><a href="#查看并在云服务器后台开方端口" class="headerlink" title="查看并在云服务器后台开方端口"></a>查看并在云服务器后台开方端口</h2><ul><li><h3 id="如图找到相应的端口"><a href="#如图找到相应的端口" class="headerlink" title="如图找到相应的端口"></a>如图找到相应的端口</h3></li></ul><pre><code> ps -aux |grep vnc</code></pre><img src="查看VNC的端口.png" alt=""  /><ul><li><h3 id="在阿里云后台开发端口"><a href="#在阿里云后台开发端口" class="headerlink" title="在阿里云后台开发端口"></a>在阿里云后台开发端口</h3></li></ul><p><img src="%E5%9C%A8%E9%98%BF%E9%87%8C%E4%BA%91%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91%E7%AB%AF%E5%8F%A3.png" alt=""></p><h2 id="下载安装-vncviewer"><a href="#下载安装-vncviewer" class="headerlink" title="下载安装 vncviewer"></a>下载安装 <code>vncviewer</code></h2><ul><li>给出官网地址 自行下载安装</li></ul><p>(vncviewer)[<a href="https://www.realvnc.com/en/connect/download/viewer/]" target="_blank" rel="noopener">https://www.realvnc.com/en/connect/download/viewer/]</a></p><ul><li><code>vncviewer</code>连接服务器</li></ul><img src="connection1.png" alt=""  /><img src="connection2.png" alt=""  /><img src="connection3.jpg" alt=""  /><p><img src="connection4.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>screen管理会话</title>
       <link href="/2020/07/28/screen%E7%AE%A1%E7%90%86%E4%BC%9A%E8%AF%9D/"/>
       <url>/2020/07/28/screen%E7%AE%A1%E7%90%86%E4%BC%9A%E8%AF%9D/</url>

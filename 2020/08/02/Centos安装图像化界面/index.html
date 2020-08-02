@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="linux下使用selenium, 黎北辰">
+    <meta name="keywords" content="Centos安装图像化界面, 黎北辰">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>linux下使用selenium | 黎北辰</title>
+    <title>Centos安装图像化界面 | 黎北辰</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/images/linux%E4%B8%8B%E4%BD%BF%E7%94%A8selenium.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">linux下使用selenium</h1>
+                    <h1 class="description center-align post-title">Centos安装图像化界面</h1>
                 </div>
             </div>
         </div>
@@ -430,10 +430,6 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Python/">
-                                <span class="chip bg-color">Python</span>
-                            </a>
-                        
                             <a href="/tags/Linux/">
                                 <span class="chip bg-color">Linux</span>
                             </a>
@@ -446,8 +442,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Python/" class="post-category">
-                                Python
+                            <a href="/categories/Linux/" class="post-category">
+                                Linux
                             </a>
                         
                     </div>
@@ -459,7 +455,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-07-26
+                    2020-08-02
                 </div>
                 
 
@@ -468,7 +464,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    184
+                    144
                 </div>
                 
 
@@ -485,34 +481,36 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h2><ul>
-<li><code>Centos 7</code></li>
-<li>注意不要使用<code>Centos8</code> 会出现下面的库安装不上的问题</li>
+                <h2 id="安装GNOME桌面"><a href="#安装GNOME桌面" class="headerlink" title="安装GNOME桌面"></a>安装GNOME桌面</h2><blockquote>
+<p>时间会稍微长一些，因为要下载大概600M的东西</p>
+</blockquote>
+<pre><code>yum groupinstall &quot;GNOME Desktop&quot; &quot;Graphical Administration Tools&quot;</code></pre><h2 id="安装VNC-Server"><a href="#安装VNC-Server" class="headerlink" title="安装VNC Server"></a>安装VNC Server</h2><pre><code>yum -y install vnc &quot;vnc-server&quot;</code></pre><h2 id="设置vnc-server-密码"><a href="#设置vnc-server-密码" class="headerlink" title="设置vnc server 密码"></a>设置vnc server 密码</h2><pre><code>vncserver</code></pre><blockquote>
+<p>输入两次密码</p>
+</blockquote>
+<h2 id="启动vncserver"><a href="#启动vncserver" class="headerlink" title="启动vncserver"></a>启动vncserver</h2><p>注意这里的<code>:1</code>前面有空格！</p>
+<pre><code>vncserver :1</code></pre><h2 id="查看并在云服务器后台开方端口"><a href="#查看并在云服务器后台开方端口" class="headerlink" title="查看并在云服务器后台开方端口"></a>查看并在云服务器后台开方端口</h2><ul>
+<li><h3 id="如图找到相应的端口"><a href="#如图找到相应的端口" class="headerlink" title="如图找到相应的端口"></a>如图找到相应的端口</h3></li>
 </ul>
-<h2 id="安装最新的-Google-Chrome"><a href="#安装最新的-Google-Chrome" class="headerlink" title="安装最新的 Google Chrome"></a>安装最新的 Google Chrome</h2><pre class=" language-sh"><code class="language-sh">yum install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm</code></pre>
-<h2 id="安装必要的库"><a href="#安装必要的库" class="headerlink" title="安装必要的库"></a>安装必要的库</h2><pre class=" language-shell"><code class="language-shell">yum install mesa-libOSMesa-devel gnu-free-sans-fonts wqy-zenhei-fonts</code></pre>
-<h2 id="查看谷歌浏览器版本"><a href="#查看谷歌浏览器版本" class="headerlink" title="查看谷歌浏览器版本"></a>查看谷歌浏览器版本</h2><pre class=" language-shell"><code class="language-shell">google-chrome --version </code></pre>
-<h2 id="安装-chromedriver"><a href="#安装-chromedriver" class="headerlink" title="安装 chromedriver"></a>安装 <code>chromedriver</code></h2><pre class=" language-sh"><code class="language-sh">wget http://npm.taobao.org/mirrors/chromedriver/2.41/chromedriver_linux64.zip
+<pre><code> ps -aux |grep vnc</code></pre><img src="查看VNC的端口.png" alt=""  />
 
-unzip chromedriver_linux64.zip
-mv chromedriver /usr/bin/
-chmod +x /usr/bin/chromedriver</code></pre>
-<h2 id="加入path"><a href="#加入path" class="headerlink" title="加入path"></a>加入path</h2><pre class=" language-shell"><code class="language-shell">vim .bashrc
-在里面加入：
-export PATH="$PATH:/usr/bin/chromedriver"
-source ~/.bashrc</code></pre>
-<h2 id="查看path"><a href="#查看path" class="headerlink" title="查看path"></a>查看<code>path</code></h2><pre class=" language-shell"><code class="language-shell">$PATH</code></pre>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> selenium <span class="token keyword">import</span> webdriver
-<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>chrome<span class="token punctuation">.</span>options <span class="token keyword">import</span> Options
-chrome_options <span class="token operator">=</span> Options<span class="token punctuation">(</span><span class="token punctuation">)</span>
-chrome_options<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--no-sandbox'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 参数是让Chrome在root权限下跑</span>
-chrome_options<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--disable-dev-shm-usage'</span><span class="token punctuation">)</span>
-chrome_options<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--headless'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 参数是不用打开图形界面</span>
-driver <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Chrome<span class="token punctuation">(</span>chrome_options<span class="token operator">=</span>chrome_options<span class="token punctuation">)</span>
+<ul>
+<li><h3 id="在阿里云后台开发端口"><a href="#在阿里云后台开发端口" class="headerlink" title="在阿里云后台开发端口"></a>在阿里云后台开发端口</h3></li>
+</ul>
+<p><img src="%E5%9C%A8%E9%98%BF%E9%87%8C%E4%BA%91%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91%E7%AB%AF%E5%8F%A3.png" alt=""></p>
+<h2 id="下载安装-vncviewer"><a href="#下载安装-vncviewer" class="headerlink" title="下载安装 vncviewer"></a>下载安装 <code>vncviewer</code></h2><ul>
+<li>给出官网地址 自行下载安装</li>
+</ul>
+<p>(vncviewer)[<a href="https://www.realvnc.com/en/connect/download/viewer/]" target="_blank" rel="noopener">https://www.realvnc.com/en/connect/download/viewer/]</a></p>
+<ul>
+<li><code>vncviewer</code>连接服务器</li>
+</ul>
+<img src="connection1.png" alt=""  />
 
-driver<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"https://www.baidu.com"</span><span class="token punctuation">)</span>
+<img src="connection2.png" alt=""  />
 
-<span class="token keyword">print</span><span class="token punctuation">(</span>browser<span class="token punctuation">.</span>page_source<span class="token punctuation">)</span></code></pre>
+<img src="connection3.jpg" alt=""  />
+
+<p><img src="connection4.png" alt=""></p>
 
             </div>
             <hr/>
@@ -538,7 +536,7 @@ driver<span class="token punctuation">.</span>get<span class="token punctuation"
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/07/26/linux%E4%B8%8B%E4%BD%BF%E7%94%A8selenium/">http://yoursite.com/2020/07/26/linux%E4%B8%8B%E4%BD%BF%E7%94%A8selenium/</a>
+                    <a href="http://yoursite.com/2020/08/02/Centos%E5%AE%89%E8%A3%85%E5%9B%BE%E5%83%8F%E5%8C%96%E7%95%8C%E9%9D%A2/">http://yoursite.com/2020/08/02/Centos%E5%AE%89%E8%A3%85%E5%9B%BE%E5%83%8F%E5%8C%96%E7%95%8C%E9%9D%A2/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -575,10 +573,6 @@ driver<span class="token punctuation">.</span>get<span class="token punctuation"
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/Python/">
-                                    <span class="chip bg-color">Python</span>
-                                </a>
                             
                                 <a href="/tags/Linux/">
                                     <span class="chip bg-color">Linux</span>
@@ -645,45 +639,48 @@ driver<span class="token punctuation">.</span>get<span class="token punctuation"
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/07/26/Redis/">
+                <a href="/2020/08/02/Centos%E5%AE%89%E8%A3%85%E5%9B%BE%E5%83%8F%E5%8C%96%E7%95%8C%E9%9D%A2/">
                     <div class="card-image">
                         
-                        <img src="/medias/images/redis-logo.jpg" class="responsive-img" alt="Redis">
                         
-                        <span class="card-title">Redis</span>
+                        <img src="https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/medias/featureimages/5.jpg" class="responsive-img" alt="Centos安装图像化界面">
+                        
+                        <span class="card-title">Centos安装图像化界面</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Redis命运学习整理
+                            在Linux云服务器Centos上安装图像化界面
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-26
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-02
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Redis/" class="post-category">
-                                    Redis
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Redis/">
-                        <span class="chip bg-color">Redis</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                 </div>
@@ -697,39 +694,31 @@ driver<span class="token punctuation">.</span>get<span class="token punctuation"
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/07/26/%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B/">
+                <a href="/2020/07/28/screen%E7%AE%A1%E7%90%86%E4%BC%9A%E8%AF%9D/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/medias/featureimages/16.jpg" class="responsive-img" alt="线程和进程">
+                        <img src="https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/medias/featureimages/20.jpg" class="responsive-img" alt="screen管理会话">
                         
-                        <span class="card-title">线程和进程</span>
+                        <span class="card-title">screen管理会话</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            线程
-线程（英语：thread）是操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程
-中的实际运作单位。
-
-多线程import threading
-import time
-
-def sing():
-    for i in ra
+                            如何在Linux无界面下开启多个终端跑脚本
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-26
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-28
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Python/" class="post-category">
-                                    Python
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
                                 </a>
                             
                             
@@ -739,12 +728,8 @@ def sing():
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Python/">
-                        <span class="chip bg-color">Python</span>
-                    </a>
-                    
-                    <a href="/tags/Markdown/">
-                        <span class="chip bg-color">Markdown</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                 </div>
