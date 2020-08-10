@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>centos7安装pycharm2020.2专业版</title>
+      <link href="/2020/08/10/centos7%E5%AE%89%E8%A3%85pycharm2020-2%E4%B8%93%E4%B8%9A%E7%89%88/"/>
+      <url>/2020/08/10/centos7%E5%AE%89%E8%A3%85pycharm2020-2%E4%B8%93%E4%B8%9A%E7%89%88/</url>
+      
+        <content type="html"><![CDATA[<h2 id="下载pycharm软件包"><a href="#下载pycharm软件包" class="headerlink" title="下载pycharm软件包"></a>下载pycharm软件包</h2><p>  <strong>网页下载：</strong><a href="http://www.jetbrains.com/pycharm/download/#section=linux" target="_blank" rel="noopener">http://www.jetbrains.com/pycharm/download/#section=linux</a></p><p>  <strong>wget直接下载：</strong>wget <a href="https://download-cf.jetbrains.com/python/pycharm-professional-2020.2.tar.gz" target="_blank" rel="noopener">https://download-cf.jetbrains.com/python/pycharm-professional-2020.2.tar.gz</a></p><h2 id="解压软件包"><a href="#解压软件包" class="headerlink" title="解压软件包"></a>解压软件包</h2><pre class=" language-sh"><code class="language-sh"> tar -xf pycharm-professional-2020.2.tar.gz</code></pre><h2 id="进入解压后的bin目录执行安装命令"><a href="#进入解压后的bin目录执行安装命令" class="headerlink" title="进入解压后的bin目录执行安装命令"></a>进入解压后的bin目录执行安装命令</h2><pre class=" language-sh"><code class="language-sh">cd pycharm-2020.2/bin</code></pre><ul><li>记住这个目录 在 创建应用程序列表 及 快捷方式 需要使用</li></ul><pre class=" language-sh"><code class="language-sh">pwd   # 查看当前目录</code></pre><h2 id="执行安装命令"><a href="#执行安装命令" class="headerlink" title="执行安装命令"></a>执行安装命令</h2><pre class=" language-sh"><code class="language-sh">./pycharm.sh </code></pre><blockquote><p>该命令需要在图形模式才可以执行否则报错</p><p>关于Centos安装图形化界面请参考我的上一篇文章  <strong>Centos安装图像化界面</strong></p></blockquote><h2 id="进入到激活页面-激活方式请自行谷歌"><a href="#进入到激活页面-激活方式请自行谷歌" class="headerlink" title="进入到激活页面 激活方式请自行谷歌"></a>进入到激活页面 激活方式请自行谷歌</h2><h2 id="给pycharm-sh加入应用程序列表，并创建快捷方式"><a href="#给pycharm-sh加入应用程序列表，并创建快捷方式" class="headerlink" title="给pycharm.sh加入应用程序列表，并创建快捷方式"></a>给pycharm.sh加入应用程序列表，并创建快捷方式</h2><pre class=" language-sh"><code class="language-sh">vim /usr/share/applications/pycharm.desktop</code></pre><ul><li>写入如下內容</li></ul><pre><code>#!/usr/bin/env xdg-open[Desktop Entry]Encoding=UTF-8Name=PycharmComment=pycharm-2020.2   # 填入你的版本  eg:  pycharm-2020.2  pycharm-2018.1.1Exec=/root/pycharm-2020.2/bin/pycharm.sh    # /root/pycharm-2020.2/bin 这里写入你自己在第三步记住的目录Icon=/root/pycharm-2020.2/bin/pycharm.png    # /root/pycharm-2020.2/bin 这里写入你自己在第三步记住的目录Terminal=falseStartupNotify=trueType=ApplicationCategories=Application;</code></pre><ul><li>给文件添加可执行权限</li></ul><pre class=" language-sh"><code class="language-sh">chmod a+x /usr/share/applications/pycharm.desktop</code></pre><p>现在可以在应用程序列表找到<code>pycharm</code>了</p><p><img src="pycharm.png" alt=""></p><h2 id="创建桌面快捷方式"><a href="#创建桌面快捷方式" class="headerlink" title="创建桌面快捷方式"></a>创建桌面快捷方式</h2><pre><code>cp  /usr/share/applications/pycharm.desktop /root/桌面</code></pre><p><img src="okk.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> Python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ADB命令大全</title>
       <link href="/2020/08/04/ADB%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/"/>
       <url>/2020/08/04/ADB%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/</url>
