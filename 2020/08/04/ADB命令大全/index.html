@@ -455,7 +455,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    11.7k
+                    11.9k
                 </div>
                 
 
@@ -590,11 +590,11 @@ cf264b8f    offline</code></pre>
 <li><p>断开 USB 连接。</p>
 </li>
 <li><p>找到设备的 IP 地址。</p>
-<p>一般能在「设置」-「关于手机」-「状态信息」-「IP地址」找到，也可以使用下文里 <a href="https://www.wanandroid.com/blog/show/2310#ip-地址" target="_blank" rel="noopener">查看设备信息 - IP 地址</a> 一节里的方法用 adb 命令来查看。</p>
+<p>一般能在「设置」-「关于手机」-「状态信息」-「IP地址」找到，也可以使用下文里 <a href="http://betteryjs.top/2020/08/04/ADB命令大全/#ip-地址">查看设备信息 - IP 地址</a> 一节里的方法用 adb 命令来查看。</p>
 </li>
 <li><p>通过 IP 地址连接设备。</p>
 <pre class=" language-sh"><code class="language-sh">adb connect <device-ip-address></code></pre>
-<p>这里的 `` 就是上一步中找到的设备 IP 地址。</p>
+<p>这里的 <code>&lt;device-ip-address&gt;</code> 就是上一步中找到的设备 IP 地址。</p>
 </li>
 <li><p>确认连接状态。</p>
 <pre class=" language-sh"><code class="language-sh">adb devices</code></pre>
@@ -626,8 +626,8 @@ setprop service.adb.tcp.port 5555</code></pre>
 </li>
 <li><p>在电脑上通过 adb 和 IP 地址连接 Android 设备。</p>
 <pre class=" language-sh"><code class="language-sh">adb connect <device-ip-address></code></pre>
-<p>这里的 `` 就是上一步中找到的设备 IP 地址。</p>
-<p>如果能看到 <code>connected to :5555</code> 这样的输出则表示连接成功。</p>
+<p>这里的 <code>&lt;device-ip-address&gt;</code> 就是上一步中找到的设备 IP 地址。</p>
+<p>如果能看到 <code>connected to &lt;device-ip-address&gt;:5555</code> 这样的输出则表示连接成功。</p>
 </li>
 </ol>
 <p><em>节注一：</em></p>
@@ -679,8 +679,8 @@ start adbd</code></pre>
 <td>包含已卸载应用</td>
 </tr>
 <tr>
-<td>``</td>
-<td>包名包含 `` 字符串</td>
+<td><code>&lt;FILTER&gt;</code></td>
+<td>包名包含 <code>&lt;FILTER&gt;</code> 字符串</td>
 </tr>
 </tbody></table>
 <h4 id="所有应用"><a href="#所有应用" class="headerlink" title="所有应用"></a>所有应用</h4><p>命令：</p>
@@ -1042,13 +1042,13 @@ Failure [INSTALL_FAILED_ALREADY_EXISTS]</code></pre>
 <p>所以，必要的时候也可以根据这个步骤，手动分步执行安装过程。</p>
 <h3 id="卸载应用"><a href="#卸载应用" class="headerlink" title="卸载应用"></a>卸载应用</h3><p>命令：</p>
 <pre class=" language-sh"><code class="language-sh">adb uninstall [-k] <packagename></code></pre>
-<p>`` 表示应用的包名，<code>-k</code> 参数可选，表示卸载应用但保留数据和缓存目录。</p>
+<p><code>&lt;packagename&gt;</code>表示应用的包名，<code>-k</code> 参数可选，表示卸载应用但保留数据和缓存目录。</p>
 <p>命令示例：</p>
 <pre class=" language-sh"><code class="language-sh">adb uninstall com.qihoo360.mobilesafe</code></pre>
 <p>表示卸载 360 手机卫士。</p>
 <h3 id="清除应用数据与缓存"><a href="#清除应用数据与缓存" class="headerlink" title="清除应用数据与缓存"></a>清除应用数据与缓存</h3><p>命令：</p>
 <pre class=" language-sh"><code class="language-sh">adb shell pm clear <packagename></code></pre>
-<p>`` 表示应用名包，这条命令的效果相当于在设置里的应用信息界面点击了「清除缓存」和「清除数据」。</p>
+<p><code>&lt;packagename&gt;</code> 表示应用名包，这条命令的效果相当于在设置里的应用信息界面点击了「清除缓存」和「清除数据」。</p>
 <p>命令示例：</p>
 <pre class=" language-sh"><code class="language-sh">adb shell pm clear com.qihoo360.mobilesafe</code></pre>
 <p>表示清除 360 手机卫士的数据和缓存。</p>
@@ -1059,12 +1059,12 @@ Failure [INSTALL_FAILED_ALREADY_EXISTS]</code></pre>
 <p>其中的 <code>com.cyanogenmod.trebuchet/com.android.launcher3.Launcher</code> 就是当前处于前台的 Activity。</p>
 <h3 id="查看正在运行的-Services"><a href="#查看正在运行的-Services" class="headerlink" title="查看正在运行的 Services"></a>查看正在运行的 Services</h3><p>命令：</p>
 <pre class=" language-sh"><code class="language-sh">adb shell dumpsys activity services [<packagename>]</code></pre>
-<p><code>参数不是必须的，指定</code> 表示查看与某个包名相关的 Services，不指定表示查看所有 Services。</p>
-<p>`` 不一定要给出完整的包名，比如运行 <code>adb shell dumpsys activity services org.mazhuang</code>，那么包名 <code>org.mazhuang.demo1</code>、<code>org.mazhuang.demo2</code> 和 <code>org.mazhuang123</code> 等相关的 Services 都会列出来。</p>
+<p><code>&lt;packagename&gt;</code> 参数不是必须的，指定 <code>&lt;packagename&gt;</code> 表示查看与某个包名相关的 Services，不指定表示查看所有 Services。</p>
+<p><code>&lt;packagename&gt;</code> 不一定要给出完整的包名，比如运行 <code>adb shell dumpsys activity services org.mazhuang</code>，那么包名 <code>org.mazhuang.demo1</code>、<code>org.mazhuang.demo2</code> 和 <code>org.mazhuang123</code> 等相关的 Services 都会列出来。</p>
 <h3 id="查看应用详细信息"><a href="#查看应用详细信息" class="headerlink" title="查看应用详细信息"></a>查看应用详细信息</h3><p>命令：</p>
 <pre class=" language-sh"><code class="language-sh">adb shell dumpsys package <packagename></code></pre>
 <p>输出中包含很多信息，包括 Activity Resolver Table、Registered ContentProviders、包名、userId、安装后的文件资源代码等路径、版本信息、权限信息和授予状态、签名版本信息等。</p>
-<p>`` 表示应用包名。</p>
+<p><code>&lt;packagename&gt;</code> 表示应用包名。</p>
 <p>输出示例：</p>
 <pre class=" language-sh"><code class="language-sh">Activity Resolver Table:
   Non-Data Actions:
@@ -1146,7 +1146,7 @@ Dexopt state:
 <p>输出示例:</p>
 <pre><code>adb shell pm path ecarx.weather
 
-package:/data/app/ecarx.weather-1.apk</code></pre><h2 id="与应用交互"><a href="#与应用交互" class="headerlink" title="与应用交互"></a>与应用交互</h2><p>主要是使用 <code>am</code> 命令，常用的 `` 如下：</p>
+package:/data/app/ecarx.weather-1.apk</code></pre><h2 id="与应用交互"><a href="#与应用交互" class="headerlink" title="与应用交互"></a>与应用交互</h2><p>主要是使用 <code>am &lt;command&gt;</code> 命令，常用的 <code>&lt;command&gt;</code> 如下：</p>
 <table>
 <thead>
 <tr>
@@ -1156,22 +1156,22 @@ package:/data/app/ecarx.weather-1.apk</code></pre><h2 id="与应用交互"><a hr
 </thead>
 <tbody><tr>
 <td><code>start [options]</code></td>
-<td>启动 `` 指定的 Activity</td>
+<td>启动 <code>&lt;INTENT&gt;</code> 指定的 Activity</td>
 </tr>
 <tr>
 <td><code>startservice [options]</code></td>
-<td>启动 `` 指定的 Service</td>
+<td>启动 <code>&lt;INTENT&gt;</code> 指定的 Service</td>
 </tr>
 <tr>
 <td><code>broadcast [options]</code></td>
-<td>发送 `` 指定的广播</td>
+<td>发送 <code>&lt;INTENT&gt;</code> 指定的广播</td>
 </tr>
 <tr>
 <td><code>force-stop</code></td>
-<td>停止 `` 相关的进程</td>
+<td>停止 <code>&lt;packagename&gt;</code> 相关的进程</td>
 </tr>
 </tbody></table>
-<p>`` 参数很灵活，和写 Android 程序时代码里的 Intent 相对应。</p>
+<p><code>&lt;INTENT&gt;</code> 参数很灵活，和写 Android 程序时代码里的 Intent 相对应。</p>
 <p>用于决定 intent 对象的选项如下：</p>
 <table>
 <thead>
@@ -1193,7 +1193,7 @@ package:/data/app/ecarx.weather-1.apk</code></pre><h2 id="与应用交互"><a hr
 <td>指定完整 component 名，用于明确指定启动哪个 Activity，如 <code>com.example.app/.ExampleActivity</code></td>
 </tr>
 </tbody></table>
-<p>`` 里还能带数据，就像写代码时的 Bundle 一样：</p>
+<p><code>&lt;INTENT&gt;</code> 里还能带数据，就像写代码时的 Bundle 一样：</p>
 <table>
 <thead>
 <tr>
@@ -1202,43 +1202,43 @@ package:/data/app/ecarx.weather-1.apk</code></pre><h2 id="与应用交互"><a hr
 </tr>
 </thead>
 <tbody><tr>
-<td><code>--esn</code></td>
+<td><code>--esn &lt;EXTRA_KEY&gt;</code></td>
 <td>null 值（只有 key 名）</td>
 </tr>
 <tr>
 <td>`-e</td>
-<td>–es  `</td>
+<td>–es <EXTRA_KEY> <EXTRA_STRING_VALUE>  `</td>
 </tr>
 <tr>
-<td><code>--ez</code></td>
+<td><code>--ez &lt;EXTRA_KEY&gt; &lt;EXTRA_BOOLEAN_VALUE&gt;</code></td>
 <td>boolean 值</td>
 </tr>
 <tr>
-<td><code>--ei</code></td>
+<td><code>--ei &lt;EXTRA_KEY&gt; &lt;EXTRA_INT_VALUE&gt;</code></td>
 <td>integer 值</td>
 </tr>
 <tr>
-<td><code>--el</code></td>
+<td><code>--el &lt;EXTRA_KEY&gt; &lt;EXTRA_LONG_VALUE&gt;</code></td>
 <td>long 值</td>
 </tr>
 <tr>
-<td><code>--ef</code></td>
+<td><code>--ef &lt;EXTRA_KEY&gt; &lt;EXTRA_FLOAT_VALUE&gt;</code></td>
 <td>float 值</td>
 </tr>
 <tr>
-<td><code>--eu</code></td>
+<td><code>--eu &lt;EXTRA_KEY&gt; &lt;EXTRA_URI_VALUE&gt;</code></td>
 <td>URI</td>
 </tr>
 <tr>
-<td><code>--ecn</code></td>
+<td><code>--ecn &lt;EXTRA_KEY&gt; &lt;EXTRA_COMPONENT_NAME_VALUE&gt;</code></td>
 <td>component name</td>
 </tr>
 <tr>
-<td>`–eia  [,</td>
+<td><code>--eia &lt;EXTRA_KEY&gt; &lt;EXTRA_INT_VALUE&gt;[,&lt;EXTRA_INT_VALUE...]</code></td>
 <td>integer 数组</td>
 </tr>
 <tr>
-<td>`–ela  [,</td>
+<td><code>--ela &lt;EXTRA_KEY&gt; &lt;EXTRA_LONG_VALUE&gt;[,&lt;EXTRA_LONG_VALUE...]</code></td>
 <td>long 数组</td>
 </tr>
 </tbody></table>
@@ -1603,12 +1603,12 @@ The commands and default sources are:
 <pre class=" language-sh"><code class="language-sh">adb logcat *:W</code></pre>
 <p>会将 Warning、Error、Fatal 和 Silent 日志输出。</p>
 <p>（<strong>注：</strong> 在 macOS 下需要给 <code>*:W</code> 这样以 <code>*</code> 作为 tag 的参数加双引号，如 <code>adb logcat &quot;*:W&quot;</code>，不然会报错 <code>no matches found: *:W</code>。）</p>
-<h4 id="按-tag-和级别过滤日志"><a href="#按-tag-和级别过滤日志" class="headerlink" title="按 tag 和级别过滤日志"></a>按 tag 和级别过滤日志</h4><p>`` 可以由多个 <code>[:priority]</code> 组成。</p>
+<h4 id="按-tag-和级别过滤日志"><a href="#按-tag-和级别过滤日志" class="headerlink" title="按 tag 和级别过滤日志"></a>按 tag 和级别过滤日志</h4><p><code>&lt;filter-spec&gt;</code> 可以由多个 <code>&lt;tag&gt;[:priority]</code> 组成。</p>
 <p>比如，命令：</p>
 <pre class=" language-sh"><code class="language-sh">adb logcat ActivityManager:I MyApp:D *:S</code></pre>
 <p>表示输出 tag <code>ActivityManager</code> 的 Info 以上级别日志，输出 tag <code>MyApp</code> 的 Debug 以上级别日志，及其它 tag 的 Silent 级别日志（即屏蔽其它 tag 日志）。</p>
-<h4 id="日志格式"><a href="#日志格式" class="headerlink" title="日志格式"></a>日志格式</h4><p>可以用 <code>adb logcat -v</code> 选项指定日志输出格式。</p>
-<p>日志支持按以下几种 ``：</p>
+<h4 id="日志格式"><a href="#日志格式" class="headerlink" title="日志格式"></a>日志格式</h4><p>可以用 <code>adb logcat -v &lt;format&gt;</code> 选项指定日志输出格式。</p>
+<p>日志支持按以下几种 <code>&lt;format&gt;</code>：</p>
 <ul>
 <li><p>brief</p>
 <p>默认格式。格式为：</p>
@@ -1979,7 +1979,7 @@ adb shell settings delete global hidden_api_policy_p_apps</code></pre>
 <h3 id="状态栏和导航栏的显示隐藏"><a href="#状态栏和导航栏的显示隐藏" class="headerlink" title="状态栏和导航栏的显示隐藏"></a>状态栏和导航栏的显示隐藏</h3><p>本节所说的相关设置对应 Cyanogenmod 里的「扩展桌面」。</p>
 <p>命令：</p>
 <pre class=" language-sh"><code class="language-sh">adb shell settings put global policy_control <key-values></code></pre>
-<p>`` 可由如下几种键及其对应的值组成，格式为 <code>=:=</code>。</p>
+<p><code>&lt;key-values&gt;</code> 可由如下几种键及其对应的值组成，格式为 <code>&lt;key1&gt;=&lt;value1&gt;:&lt;key2&gt;=&lt;value2&gt;</code>。</p>
 <table>
 <thead>
 <tr>
@@ -2187,7 +2187,7 @@ su</code></pre>
 <h3 id="使用-Monkey-进行压力测试"><a href="#使用-Monkey-进行压力测试" class="headerlink" title="使用 Monkey 进行压力测试"></a>使用 Monkey 进行压力测试</h3><p>Monkey 可以生成伪随机用户事件来模拟单击、触摸、手势等操作，可以对正在开发中的程序进行随机压力测试。</p>
 <p>简单用法：</p>
 <pre class=" language-sh"><code class="language-sh">adb shell monkey -p <packagename> -v 500</code></pre>
-<p>表示向 `` 指定的应用程序发送 500 个伪随机事件。</p>
+<p>表示向 <code>&lt;packagename&gt;</code> 指定的应用程序发送 500 个伪随机事件。</p>
 <p>Monkey 的详细用法参考 <a href="https://developer.android.com/studio/test/monkey.html" target="_blank" rel="noopener">官方文档</a>。</p>
 <h3 id="开启-关闭-WiFi"><a href="#开启-关闭-WiFi" class="headerlink" title="开启/关闭 WiFi"></a>开启/关闭 WiFi</h3><p><strong>注：需要 root 权限。</strong></p>
 <p>有时需要控制设备的 WiFi 状态，可以用以下指令完成。</p>
@@ -2856,7 +2856,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">14.8k</span>&nbsp;字
+                class="white-color">14.9k</span>&nbsp;字
             
             
             
