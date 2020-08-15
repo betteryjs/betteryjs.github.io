@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>关于pip3安装psutil报错</title>
+      <link href="/2020/08/15/%E5%85%B3%E4%BA%8Epip3%E5%AE%89%E8%A3%85psutil%E6%8A%A5%E9%94%99/"/>
+      <url>/2020/08/15/%E5%85%B3%E4%BA%8Epip3%E5%AE%89%E8%A3%85psutil%E6%8A%A5%E9%94%99/</url>
+      
+        <content type="html"><![CDATA[<h2 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h2><pre><code>psutil/_psutil_common.c:9:20: fatal error: Python.h: No such file or directory     #include &lt;Python.h&gt;                        ^    compilation terminated.    error: command &#39;gcc&#39; failed with exit status 1</code></pre><h2 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h2><ul><li>检查<code>gcc</code>是否安装</li></ul><pre><code>sudo -y yum install gcc </code></pre><ul><li>再检查<code>python3-devel</code> 或者<code>python2-devel</code>是否安装</li></ul><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ul><li>如果你使用的是<code>python2</code></li></ul><pre><code>sudo yum install python2-devel</code></pre><ul><li>如果你使用的是<code>python3</code></li></ul><pre><code>sudo yum install python3-devel</code></pre><h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul><li>直接使用 <code>sudo yum install python-devel</code> 没有作用</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> Python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>centos7安装pycharm2020.2专业版</title>
       <link href="/2020/08/10/centos7%E5%AE%89%E8%A3%85pycharm2020-2%E4%B8%93%E4%B8%9A%E7%89%88/"/>
       <url>/2020/08/10/centos7%E5%AE%89%E8%A3%85pycharm2020-2%E4%B8%93%E4%B8%9A%E7%89%88/</url>
