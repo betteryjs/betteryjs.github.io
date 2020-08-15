@@ -468,7 +468,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    107
+                    101
                 </div>
                 
 
@@ -485,24 +485,28 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h2><pre><code>psutil/_psutil_common.c:9:20: fatal error: Python.h: No such file or directory
-     #include &lt;Python.h&gt;
+                <h2 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h2><pre class=" language-sh"><code class="language-sh">psutil/_psutil_common.c:9:20: fatal error: Python.h: No such file or directory
+     #include <Python.h>
                         ^
     compilation terminated.
-    error: command &#39;gcc&#39; failed with exit status 1
-</code></pre><h2 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h2><ul>
+    error: command 'gcc' failed with exit status 1
+</code></pre>
+<h2 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h2><ul>
 <li>检查<code>gcc</code>是否安装</li>
 </ul>
-<pre><code>sudo -y yum install gcc </code></pre><ul>
+<pre class=" language-sh"><code class="language-sh">sudo -y yum install gcc </code></pre>
+<ul>
 <li>再检查<code>python3-devel</code> 或者<code>python2-devel</code>是否安装</li>
 </ul>
 <h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ul>
 <li>如果你使用的是<code>python2</code></li>
 </ul>
-<pre><code>sudo yum install python2-devel</code></pre><ul>
+<pre class=" language-sh"><code class="language-sh">sudo yum install python2-devel</code></pre>
+<ul>
 <li>如果你使用的是<code>python3</code></li>
 </ul>
-<pre><code>sudo yum install python3-devel</code></pre><h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
+<pre class=" language-sh"><code class="language-sh">sudo yum install python3-devel</code></pre>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
 <li>直接使用 <code>sudo yum install python-devel</code> 没有作用</li>
 </ul>
 
@@ -637,45 +641,40 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/08/15/%E5%85%B3%E4%BA%8Epip3%E5%AE%89%E8%A3%85psutil%E6%8A%A5%E9%94%99/">
+                <a href="/2020/08/15/Telegram%E4%BA%BA%E5%BD%A2bot/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/medias/featureimages/20.jpg" class="responsive-img" alt="关于pip3安装psutil报错">
+                        <img src="https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/medias/featureimages/21.jpg" class="responsive-img" alt="把自己变成Telegram人形bot">
                         
-                        <span class="card-title">关于pip3安装psutil报错</span>
+                        <span class="card-title">把自己变成Telegram人形bot</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            报错信息psutil/_psutil_common.c:9:20: fatal error: Python.h: No such file or directory
-     #include &lt;Python.h&gt;
-      
+                            前言展开目录
+项目名字叫 pagermaid，这是一个能够把自己变成 bot 的项目，功能
+很多，比如一键偷图，自动回复等等，命令方式 - 命令（命令发送 - help 获取），比如偷别人的
+贴纸就回复贴纸-sticker就可以偷到手了，更
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-15
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-15
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            yjs
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -683,8 +682,8 @@
                         <span class="chip bg-color">Linux</span>
                     </a>
                     
-                    <a href="/tags/Python/">
-                        <span class="chip bg-color">Python</span>
+                    <a href="/tags/Telegram/">
+                        <span class="chip bg-color">Telegram</span>
                     </a>
                     
                 </div>
@@ -944,7 +943,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">15.4k</span>&nbsp;字
+                class="white-color">15.9k</span>&nbsp;字
             
             
             

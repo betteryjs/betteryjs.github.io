@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="screen管理会话, 黎北辰">
+    <meta name="keywords" content="把自己变成Telegram人形bot, 黎北辰">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>screen管理会话 | 黎北辰</title>
+    <title>把自己变成Telegram人形bot | 黎北辰</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">screen管理会话</h1>
+                    <h1 class="description center-align post-title">把自己变成Telegram人形bot</h1>
                 </div>
             </div>
         </div>
@@ -434,19 +434,14 @@
                                 <span class="chip bg-color">Linux</span>
                             </a>
                         
+                            <a href="/tags/Telegram/">
+                                <span class="chip bg-color">Telegram</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/Linux/" class="post-category">
-                                Linux
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -455,7 +450,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-07-28
+                    2020-08-15
                 </div>
                 
 
@@ -464,7 +459,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    478
                 </div>
                 
 
@@ -481,58 +476,76 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="开始使用Screen"><a href="#开始使用Screen" class="headerlink" title="开始使用Screen"></a>开始使用Screen</h2><p>简单来说，Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器。Screen中有会话的概念，用户可以在一个screen会话中创建多个screen窗口，在每一个screen窗口中就像操作一个真实的telnet/SSH连接窗口那样。在screen中创建一个新的窗口有这样几种方式：</p>
-<p>1．直接在命令行键入screen命令</p>
-<pre><code>[root@tivf06 ~]# screen</code></pre><p>Screen将创建一个执行shell的全屏窗口。你可以执行任意shell程序，就像在ssh窗口中那样。在该窗口中键入exit退出该窗口，如果这是该screen会话的唯一窗口，该screen会话退出，否则screen自动切换到前一个窗口。</p>
-<p>2．Screen命令后跟你要执行的程序。</p>
-<pre><code>[root@tivf06 ~]# screen vi test.c</code></pre><p>Screen创建一个执行vi test.c的单窗口会话，退出vi将退出该窗口/会话。</p>
-<p>3．以上两种方式都创建新的screen会话。我们还可以在一个已有screen会话中创建新的窗口。在当前screen窗口中键入<code>C-a c</code>，即Ctrl键+a键，之后再按下c键，screen 在该会话内生成一个新的窗口并切换到该窗口。</p>
-<p>screen还有更高级的功能。你可以不中断screen窗口中程序的运行而暂时断开（detach）screen会话，并在随后时间重新连接（attach）该会话，重新控制各窗口中运行的程序。例如，我们打开一个screen窗口编辑/tmp/abc文件：</p>
-<pre><code>[root@tivf06 ~]# screen vi /tmp/abc</code></pre><p>之后我们想暂时退出做点别的事情，比如出去散散步，那么在screen窗口键入<code>C-a d</code>，Screen会给出detached提示：</p>
-<h5 id="暂时中断会话"><a href="#暂时中断会话" class="headerlink" title="暂时中断会话"></a>暂时中断会话</h5><p><img src="vi.jpg" alt="暂时中断会话"></p>
-<p>半个小时之后回来了，找到该screen会话：</p>
-<pre><code>[root@tivf06 ~]# screen -ls``There is a screen on:``    ``16582.pts-1.tivf06   (Detached)``1 Socket in /tmp/screens/S-root.</code></pre><p>重新连接会话：</p>
-<pre><code>[root@tivf06 ~]# screen -r 16582</code></pre><p>看看出现什么了，太棒了，一切都在。继续干吧。</p>
-<p>你可能注意到给screen发送命令使用了特殊的键组合C-a。这是因为我们在键盘上键入的信息是直接发送给当前screen窗口，必须用其他方式向screen窗口管理器发出命令，默认情况下，screen接收以C-a开始的命令。这种命令形式在screen中叫做键绑定（key binding），C-a叫做命令字符（command character）。</p>
-<p>可以通过<code>C-a ?</code>来查看所有的键绑定，常用的键绑定有：</p>
-<pre><code>C-a ?     显示所有键绑定信息
-C-a w显示所有窗口列表
-C-a C-a切换到之前显示的窗口
-C-a c创建一个新的运行shell的窗口并切换到该窗口
-C-a n切换到下一个窗口
-C-a p切换到前一个窗口(与C-a n相对)
-C-a 0..9切换到窗口0..9
-C-a a发送 C-a到当前窗口
-C-a d暂时断开screen会话
-C-a k杀掉当前窗口
-C-a [进入拷贝/回滚模式</code></pre><h2 id="Screen常用选项"><a href="#Screen常用选项" class="headerlink" title="Screen常用选项"></a>Screen常用选项</h2><p>使用键绑定C-a ?命令可以看到, 默认的命令字符（Command key）为C-a，转义C-a（literal ^a）的字符为a：</p>
-<h5 id="Screen-常用选项"><a href="#Screen-常用选项" class="headerlink" title="Screen 常用选项"></a>Screen 常用选项</h5><p><img src="keybindings.jpg" alt="Screen 常用选项"></p>
-<p>因为screen把C-a看作是screen命令的开始，所以如果你想要screen窗口接收到C-a字符，就要输入C-a a。Screen也允许你使用-e选项设置自己的命令字符和转义字符，其格式为：</p>
-<p>-exy x为命令字符，y为转义命令字符的字符</p>
-<p>下面命令启动的screen会话指定了命令字符为C-t，转义C-t的字符为t，通过C-t ?命令可以看到该变化。</p>
-<pre><code>[root@tivf18 root]# screen -e^tt</code></pre><h5 id="自定义命令字符和转义字符"><a href="#自定义命令字符和转义字符" class="headerlink" title="自定义命令字符和转义字符"></a>自定义命令字符和转义字符</h5><p><img src="newkeybinding.jpg" alt="自定义命令字符和转义字符"></p>
-<h2 id="管理你的远程会话"><a href="#管理你的远程会话" class="headerlink" title="管理你的远程会话"></a>管理你的远程会话</h2><p>先来看看如何使用screen解决SIGHUP问题，比如现在我们要ftp传输一个大文件。如果按老的办法，SSH登录到系统，直接ftp命令开始传输，之后。。如果网络速度还可以，恭喜你，不用等太长时间了；如果网络不好，老老实实等着吧，只能传输完毕再断开SSH连接了。让我们使用screen来试试。</p>
-<p>SSH登录到系统，在命令行键入screen。</p>
-<pre><code>[root@tivf18 root]# screen</code></pre><p>在screen shell窗口中输入ftp命令，登录，开始传输。不愿意等了？OK，在窗口中键入C-a d：</p>
-<h5 id="管理你的远程会话-1"><a href="#管理你的远程会话-1" class="headerlink" title="管理你的远程会话"></a>管理你的远程会话</h5><p><img src="ftp.jpg" alt="管理你的远程会话"></p>
-<p>然后。。退出SSH登录？随你怎样，只要别杀掉screen会话。</p>
-<p>是不是很方便？更进一步，其实我们可以利用screen这种功能来管理你的远程会话，保存你所有的工作内容。你是不是每次登录到系统都要开很多窗口，然后每天都要重复打开关闭这些窗口？让screen来帮你“保存”吧，你只需要打开一个ssh窗口，创建需要的screen窗口，退出的时候C-a d“保存”你的工作，下次登录后直接screen -r <screen_pid>就可以了。</p>
-<p>最好能给每个窗口起一个名字，这样好记些。使用C-a A给窗口起名字。使用C-a w可以看到这些窗口名字，可能名字出现的位置不同。使用putty：</p>
-<h5 id="putty"><a href="#putty" class="headerlink" title="putty"></a>putty</h5><p><img src="putty.jpg" alt="putty"></p>
-<p>使用telnet：</p>
-<h5 id="telnet"><a href="#telnet" class="headerlink" title="telnet"></a>telnet</h5><p><img src="telnet.jpg" alt="telnet"></p>
-<h2 id="杀掉screen中的其他session"><a href="#杀掉screen中的其他session" class="headerlink" title="杀掉screen中的其他session"></a>杀掉screen中的其他session</h2><pre><code>[root@rhel63single ~]# kill -9 5850
-[root@rhel63single ~]# screen -ls
-There is a screen on:
-        5850.lei2       (Dead ???)
-Remove dead screens with &#39;screen -wipe&#39;.
-1 Socket in /var/run/screen/S-root.
+                <h2 id="前言展开目录"><a href="#前言展开目录" class="headerlink" title="前言展开目录"></a>前言展开目录</h2><blockquote>
+<p>项目名字叫 <code>pagermaid</code>，这是一个能够把自己变成 bot 的项目，功能</p>
+<p>很多，比如一键偷图，自动回复等等，命令方式 - 命令（命令发送 <code>- help</code> 获取），比如偷别人的</p>
+<p>贴纸<code>就回复贴纸</code>-sticker<code>就可以偷到手了，更多功能输入</code>- help` 获取帮助，获取命令用法则输入 </p>
+<p><code>-help</code> 命令名称</p>
+</blockquote>
+<p><strong>比如这样：</strong></p>
+<p><img src="liebiao.png" alt=""></p>
+<h2 id="Github项目地址"><a href="#Github项目地址" class="headerlink" title="Github项目地址"></a><code>Github</code>项目地址</h2><img src="github.png">
 
-[root@rhel63single ~]# screen -wipe
-There is a screen on:
-        5850.lei2       (Removed)
-1 socket wiped out.
-No Sockets found in /var/run/screen/S-root.</code></pre>
+<p><a href="https://github.com/xtaodada/PagerMaid-Modify" target="_blank" rel="noopener">PagerMaid</a></p>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h4 id="准备：一台-VPS-Centos7-5展开目录"><a href="#准备：一台-VPS-Centos7-5展开目录" class="headerlink" title="准备：一台 VPS Centos7.5展开目录"></a>准备：一台 <code>VPS Centos7.5</code>展开目录</h4><h4 id="更新一下系统"><a href="#更新一下系统" class="headerlink" title="更新一下系统"></a>更新一下系统</h4><pre class=" language-sh"><code class="language-sh">sudo yum -y update
+sudo yum -y upgrade</code></pre>
+<h4 id="GIT-项目"><a href="#GIT-项目" class="headerlink" title="GIT 项目"></a>GIT 项目</h4><pre class=" language-sh"><code class="language-sh">git clone https://github.com/xtaodada/PagerMaid-Modify.git
+cd PagerMaid-Modify</code></pre>
+<h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><pre class=" language-sh"><code class="language-sh">pip3 install -r requirements.txt</code></pre>
+<h3 id="可能出现报错信息"><a href="#可能出现报错信息" class="headerlink" title="可能出现报错信息"></a>可能出现报错信息</h3><pre class=" language-sh"><code class="language-sh">psutil/_psutil_common.c:9:20: fatal error: Python.h: No such file or directory
+     #include <Python.h>
+                        ^
+    compilation terminated.
+    error: command 'gcc' failed with exit status 1</code></pre>
+<h2 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h2><ul>
+<li>检查<code>gcc</code>是否安装</li>
+</ul>
+<pre class=" language-sh"><code class="language-sh">sudo -y yum install gcc </code></pre>
+<ul>
+<li>再检查<code>python3-devel</code> 或者<code>python2-devel</code>是否安装</li>
+</ul>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ul>
+<li>如果你使用的是<code>python2</code></li>
+</ul>
+<pre class=" language-sh"><code class="language-sh">yum install -y  epel-release && yum -y update
+sudo yum install python2-devel</code></pre>
+<ul>
+<li>如果你使用的是<code>python3</code></li>
+</ul>
+<pre class=" language-sh"><code class="language-sh">yum install -y  epel-release && yum -y update
+sudo yum install python3-devel</code></pre>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
+<li>直接使用 <code>sudo yum install python-devel</code> 没有作用</li>
+</ul>
+<h2 id="安装以下插件"><a href="#安装以下插件" class="headerlink" title="安装以下插件"></a>安装以下插件</h2><ul>
+<li>注意一个包一个包安装 出现错误好查找信息</li>
+</ul>
+<pre class=" language-sh"><code class="language-sh">zbar ， neofetch ， tesseract 和 ImageMagick 软件包
+
+yum -y install zbar
+yum -y install neofetch
+yum -y install tesseract
+yum -y install ImageMagick</code></pre>
+<ul>
+<li>没有这个包需要安装第三方扩展包</li>
+</ul>
+<pre class=" language-sh"><code class="language-sh">yum install -y  epel-release && yum -y update</code></pre>
+<ul>
+<li>安装<code>email_validator</code></li>
+</ul>
+<pre class=" language-sh"><code class="language-sh">pip3 install email_validator</code></pre>
+<ul>
+<li>安装<code>pagermaid</code></li>
+</ul>
+<pre class=" language-sh"><code class="language-sh">pip3 install pagermaid</code></pre>
+<h4 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h4><p><strong>将配置 <code>config.gen.yml</code> 文件改名为 <code>config.yml</code></strong></p>
+<pre class=" language-sh"><code class="language-sh">cp config.gen.yml config.yml</code></pre>
+<h4 id="去-https-my-telegram-org生成-api-填入配置文件，我们只需要复制-api-id-和api-hash值"><a href="#去-https-my-telegram-org生成-api-填入配置文件，我们只需要复制-api-id-和api-hash值" class="headerlink" title="去 https://my.telegram.org生成 api 填入配置文件，我们只需要复制 api id 和api_hash值"></a>去 <a href="https://my.telegram.org" target="_blank" rel="noopener">https://my.telegram.org</a>生成 <code>api</code> 填入配置文件，我们只需要复制 <code>api id</code> 和<code>api_hash</code>值</h4><p><img src="tgkey.png" alt=""></p>
+<h4 id="将这两串数字填入配置文件，按i-进入编辑模式，粘贴好后，按下-esc-输入-shift-加冒号，输入-wq-保存退出"><a href="#将这两串数字填入配置文件，按i-进入编辑模式，粘贴好后，按下-esc-输入-shift-加冒号，输入-wq-保存退出" class="headerlink" title="将这两串数字填入配置文件，按i 进入编辑模式，粘贴好后，按下 esc 输入 shift 加冒号，输入 wq 保存退出"></a>将这两串数字填入配置文件，按<code>i</code> 进入编辑模式，粘贴好后，按下 <code>esc</code> 输入 shift 加冒号，输入 <code>wq</code> 保存退出</h4><pre class=" language-sh"><code class="language-sh">vim config.yml</code></pre>
+<p>只修改<code>api_key</code> 和<code>api_hash</code></p>
+<p><img src="InkedAnnotation.png" alt=""></p>
+<h2 id="启动项目展开目录"><a href="#启动项目展开目录" class="headerlink" title="启动项目展开目录"></a>启动项目展开目录</h2><pre class=" language-sh"><code class="language-sh">python3 -m pagermaid</code></pre>
+
             </div>
             <hr/>
 
@@ -557,7 +570,7 @@ No Sockets found in /var/run/screen/S-root.</code></pre>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://betteryjs.top/2020/07/28/screen%E7%AE%A1%E7%90%86%E4%BC%9A%E8%AF%9D/">http://betteryjs.top/2020/07/28/screen%E7%AE%A1%E7%90%86%E4%BC%9A%E8%AF%9D/</a>
+                    <a href="http://betteryjs.top/2020/08/15/Telegram%E4%BA%BA%E5%BD%A2bot/">http://betteryjs.top/2020/08/15/Telegram%E4%BA%BA%E5%BD%A2bot/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -597,6 +610,10 @@ No Sockets found in /var/run/screen/S-root.</code></pre>
                             
                                 <a href="/tags/Linux/">
                                     <span class="chip bg-color">Linux</span>
+                                </a>
+                            
+                                <a href="/tags/Telegram/">
+                                    <span class="chip bg-color">Telegram</span>
                                 </a>
                             
                         </div>
@@ -660,28 +677,85 @@ No Sockets found in /var/run/screen/S-root.</code></pre>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/08/02/Centos%E5%AE%89%E8%A3%85%E5%9B%BE%E5%83%8F%E5%8C%96%E7%95%8C%E9%9D%A2/">
+                <a href="/2020/08/15/Telegram%E4%BA%BA%E5%BD%A2bot/">
                     <div class="card-image">
                         
-                        <img src="/medias/images/Centos%E5%AE%89%E8%A3%85%E5%9B%BE%E5%83%8F%E5%8C%96%E7%95%8C%E9%9D%A2.jpg" class="responsive-img" alt="Centos安装图像化界面">
                         
-                        <span class="card-title">Centos安装图像化界面</span>
+                        <img src="https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/medias/featureimages/21.jpg" class="responsive-img" alt="把自己变成Telegram人形bot">
+                        
+                        <span class="card-title">把自己变成Telegram人形bot</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            在Linux云服务器Centos上安装图像化界面
+                            前言展开目录
+项目名字叫 pagermaid，这是一个能够把自己变成 bot 的项目，功能
+很多，比如一键偷图，自动回复等等，命令方式 - 命令（命令发送 - help 获取），比如偷别人的
+贴纸就回复贴纸-sticker就可以偷到手了，更
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-02
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-15
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            yjs
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                    <a href="/tags/Telegram/">
+                        <span class="chip bg-color">Telegram</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/08/15/%E5%85%B3%E4%BA%8Epip3%E5%AE%89%E8%A3%85psutil%E6%8A%A5%E9%94%99/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/medias/featureimages/20.jpg" class="responsive-img" alt="关于pip3安装psutil报错">
+                        
+                        <span class="card-title">关于pip3安装psutil报错</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            报错信息psutil/_psutil_common.c:9:20: fatal error: Python.h: No such file or directory
+     #include 
+                      
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -701,52 +775,8 @@ No Sockets found in /var/run/screen/S-root.</code></pre>
                         <span class="chip bg-color">Linux</span>
                     </a>
                     
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/07/26/Redis/">
-                    <div class="card-image">
-                        
-                        <img src="/medias/images/redis-logo.jpg" class="responsive-img" alt="Redis">
-                        
-                        <span class="card-title">Redis</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            Redis命令学习整理
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-26
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Redis/" class="post-category">
-                                    Redis
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Redis/">
-                        <span class="chip bg-color">Redis</span>
+                    <a href="/tags/Python/">
+                        <span class="chip bg-color">Python</span>
                     </a>
                     
                 </div>
