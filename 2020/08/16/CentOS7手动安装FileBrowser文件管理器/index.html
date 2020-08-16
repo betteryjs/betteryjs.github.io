@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="linux下使用selenium, 黎北辰">
+    <meta name="keywords" content="CentOS7手动安装FileBrowser文件管理器, 黎北辰">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>linux下使用selenium | 黎北辰</title>
+    <title>CentOS7手动安装FileBrowser文件管理器 | 黎北辰</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/images/linux%E4%B8%8B%E4%BD%BF%E7%94%A8selenium.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">linux下使用selenium</h1>
+                    <h1 class="description center-align post-title">CentOS7手动安装FileBrowser文件管理器</h1>
                 </div>
             </div>
         </div>
@@ -434,10 +434,6 @@
                                 <span class="chip bg-color">Linux</span>
                             </a>
                         
-                            <a href="/tags/Python/">
-                                <span class="chip bg-color">Python</span>
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -446,8 +442,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Python/" class="post-category">
-                                Python
+                            <a href="/categories/Linux/" class="post-category">
+                                Linux
                             </a>
                         
                     </div>
@@ -459,7 +455,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-07-26
+                    2020-08-16
                 </div>
                 
 
@@ -468,7 +464,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    184
+                    366
                 </div>
                 
 
@@ -485,35 +481,44 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h2><ul>
-<li><code>Centos 7</code></li>
-<li>注意不要使用<code>Centos8</code> 会出现下面的库安装不上的问题</li>
+                <p>File Browser是一款使用Golang开发的文件管理器，跨平台，免费开源，功能强大。这篇文章分享下CentOS 7手动安装File Browser的方法，熟悉下File Browser运作流程，不至于后期出现问题不知所措。</p>
+<h2 id="下载File-Browser"><a href="#下载File-Browser" class="headerlink" title="下载File Browser"></a>下载File Browser</h2><ul>
+<li>下载地址：<a href="https://github.com/filebrowser/filebrowser/releases" target="_blank" rel="noopener">https://github.com/filebrowser/filebrowser/releases</a></li>
 </ul>
-<h2 id="安装最新的-Google-Chrome"><a href="#安装最新的-Google-Chrome" class="headerlink" title="安装最新的 Google Chrome"></a>安装最新的 Google Chrome</h2><pre class=" language-sh"><code class="language-sh">yum install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm</code></pre>
-<h2 id="安装必要的库"><a href="#安装必要的库" class="headerlink" title="安装必要的库"></a>安装必要的库</h2><pre class=" language-shell"><code class="language-shell">yum install mesa-libOSMesa-devel gnu-free-sans-fonts wqy-zenhei-fonts</code></pre>
-<h2 id="查看谷歌浏览器版本"><a href="#查看谷歌浏览器版本" class="headerlink" title="查看谷歌浏览器版本"></a>查看谷歌浏览器版本</h2><pre class=" language-shell"><code class="language-shell">google-chrome --version </code></pre>
-<h2 id="安装-chromedriver"><a href="#安装-chromedriver" class="headerlink" title="安装 chromedriver"></a>安装 <code>chromedriver</code></h2><pre class=" language-sh"><code class="language-sh">wget http://npm.taobao.org/mirrors/chromedriver/2.41/chromedriver_linux64.zip
-
-unzip chromedriver_linux64.zip
-mv chromedriver /usr/bin/
-chmod +x /usr/bin/chromedriver</code></pre>
-<h2 id="加入path"><a href="#加入path" class="headerlink" title="加入path"></a>加入path</h2><pre class=" language-shell"><code class="language-shell">vim .bashrc
-在里面加入：
-export PATH="$PATH:/usr/bin/chromedriver"
-source ~/.bashrc</code></pre>
-<h2 id="查看path"><a href="#查看path" class="headerlink" title="查看path"></a>查看<code>path</code></h2><pre class=" language-shell"><code class="language-shell">$PATH</code></pre>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> selenium <span class="token keyword">import</span> webdriver
-<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>chrome<span class="token punctuation">.</span>options <span class="token keyword">import</span> Options
-chrome_options <span class="token operator">=</span> Options<span class="token punctuation">(</span><span class="token punctuation">)</span>
-chrome_options<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--no-sandbox'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 参数是让Chrome在root权限下跑</span>
-chrome_options<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--disable-dev-shm-usage'</span><span class="token punctuation">)</span>
-chrome_options<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--headless'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 参数是不用打开图形界面</span>
-driver <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Chrome<span class="token punctuation">(</span>chrome_options<span class="token operator">=</span>chrome_options<span class="token punctuation">)</span>
-
-driver<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"https://www.baidu.com"</span><span class="token punctuation">)</span>
-
-<span class="token keyword">print</span><span class="token punctuation">(</span>browser<span class="token punctuation">.</span>page_source<span class="token punctuation">)</span></code></pre>
-
+<p>下载地址中作者提供了各平台编译好的二进制文件，根据自己的平台下载解压即可，无需自行编译，以CentOS 7为例。</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#下载File Browser</span>
+<span class="token function">wget</span> https://github.com/filebrowser/filebrowser/releases/download/v2.1.0/linux-amd64-filebrowser.tar.gz
+<span class="token comment" spellcheck="true">#解压</span>
+<span class="token function">tar</span> -zxvf linux-amd64-filebrowser.tar.gz
+<span class="token comment" spellcheck="true">#移动位置</span>
+<span class="token function">mv</span> filebrowser /usr/sbin</code></pre>
+<h2 id="创建配置文件"><a href="#创建配置文件" class="headerlink" title="创建配置文件"></a>创建配置文件</h2><p>File Browser支持json, toml, yaml, yml格式的配置文件，以<code>json</code>格式为例，命令如下：</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#先创建一个目录用来存放数据库和配置文件</span>
+<span class="token function">mkdir</span> /filebrowser/
+<span class="token comment" spellcheck="true">#新建配置文件</span>
+<span class="token function">vi</span> /filebrowser/config.json</code></pre>
+<p>复制下面的内容保存到<code>/filebrowser/config.json</code></p>
+<pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"address"</span><span class="token operator">:</span><span class="token string">"0.0.0.0"</span><span class="token punctuation">,</span>
+    <span class="token property">"database"</span><span class="token operator">:</span><span class="token string">"/filebrowser/filebrowser.db"</span><span class="token punctuation">,</span>
+    <span class="token property">"log"</span><span class="token operator">:</span><span class="token string">"/var/log/filebrowser.log"</span><span class="token punctuation">,</span>
+    <span class="token property">"port"</span><span class="token operator">:</span><span class="token number">8080</span><span class="token punctuation">,</span>
+    <span class="token property">"root"</span><span class="token operator">:</span><span class="token string">"/home"</span><span class="token punctuation">,</span>
+    <span class="token property">"username"</span><span class="token operator">:</span><span class="token string">"admin"</span>
+<span class="token punctuation">}</span></code></pre>
+<p>上面参数含义为如下，请根据自身情况修改。</p>
+<ul>
+<li>address：监听地址</li>
+<li>database：数据库地址</li>
+<li>log：日志文件路径</li>
+<li>port：需要监听的端口</li>
+<li>root：需要读取哪个目录下的文件</li>
+<li>username：用户名</li>
+</ul>
+<h2 id="运行File-Browser"><a href="#运行File-Browser" class="headerlink" title="运行File Browser"></a>运行File Browser</h2><p>参数<code>-c</code>是指定File Browser配置文件路径，请根据自身情况填写路径，命令如下：</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#常规运行</span>
+filebrowser -c /etc/filebrowser/config.json</code></pre>
+<h2 id="数据地址目录"><a href="#数据地址目录" class="headerlink" title="数据地址目录"></a>数据地址目录</h2><pre><code>/home</code></pre>
             </div>
             <hr/>
 
@@ -538,7 +543,7 @@ driver<span class="token punctuation">.</span>get<span class="token punctuation"
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://betteryjs.top/2020/07/26/linux%E4%B8%8B%E4%BD%BF%E7%94%A8selenium/">http://betteryjs.top/2020/07/26/linux%E4%B8%8B%E4%BD%BF%E7%94%A8selenium/</a>
+                    <a href="http://betteryjs.top/2020/08/16/CentOS7%E6%89%8B%E5%8A%A8%E5%AE%89%E8%A3%85FileBrowser%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/">http://betteryjs.top/2020/08/16/CentOS7%E6%89%8B%E5%8A%A8%E5%AE%89%E8%A3%85FileBrowser%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -578,10 +583,6 @@ driver<span class="token punctuation">.</span>get<span class="token punctuation"
                             
                                 <a href="/tags/Linux/">
                                     <span class="chip bg-color">Linux</span>
-                                </a>
-                            
-                                <a href="/tags/Python/">
-                                    <span class="chip bg-color">Python</span>
                                 </a>
                             
                         </div>
@@ -645,45 +646,49 @@ driver<span class="token punctuation">.</span>get<span class="token punctuation"
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/07/26/Redis/">
+                <a href="/2020/08/16/CentOS7%E6%89%8B%E5%8A%A8%E5%AE%89%E8%A3%85FileBrowser%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/">
                     <div class="card-image">
                         
-                        <img src="/medias/images/redis-logo.jpg" class="responsive-img" alt="Redis">
                         
-                        <span class="card-title">Redis</span>
+                        <img src="https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/medias/featureimages/20.jpg" class="responsive-img" alt="CentOS7手动安装FileBrowser文件管理器">
+                        
+                        <span class="card-title">CentOS7手动安装FileBrowser文件管理器</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Redis命令学习整理
+                            File Browser是一款使用Golang开发的文件管理器，跨平台，免费开源，功能强大。这篇文章分享下CentOS 7手动安装File Browser的方法，熟悉下File Browser运作流程，不至于后期出现问题不知所措。
+下载Fi
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-26
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Redis/" class="post-category">
-                                    Redis
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Redis/">
-                        <span class="chip bg-color">Redis</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                 </div>
@@ -697,39 +702,38 @@ driver<span class="token punctuation">.</span>get<span class="token punctuation"
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/07/26/%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B/">
+                <a href="/2020/08/16/gclone%E5%92%8Cfclone%E8%BD%AC%E5%AD%98%E6%95%99%E7%A8%8B/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/medias/featureimages/16.jpg" class="responsive-img" alt="线程和进程">
+                        <img src="https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/medias/featureimages/21.jpg" class="responsive-img" alt="gclone和fclone转存教程">
                         
-                        <span class="card-title">线程和进程</span>
+                        <span class="card-title">gclone和fclone转存教程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            线程
-线程（英语：thread）是操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程
-中的实际运作单位。
+                            我们需要两个项目
+autorclone 里面的生成 sa 的脚本和上传 sa的脚本 
 
-多线程import threading
-import time
+gclone 
 
-def sing():
-    for i in ra
+autorclone 项目地址: https://github.com/xyou365/AutoRclone
+
+gclone 项目地址
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-26
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-16
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Python/" class="post-category">
-                                    Python
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
                                 </a>
                             
                             
@@ -739,12 +743,8 @@ def sing():
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Python/">
-                        <span class="chip bg-color">Python</span>
-                    </a>
-                    
-                    <a href="/tags/Markdown/">
-                        <span class="chip bg-color">Markdown</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                 </div>

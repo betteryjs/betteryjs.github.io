@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>CentOS7手动安装FileBrowser文件管理器</title>
+      <link href="/2020/08/16/CentOS7%E6%89%8B%E5%8A%A8%E5%AE%89%E8%A3%85FileBrowser%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/"/>
+      <url>/2020/08/16/CentOS7%E6%89%8B%E5%8A%A8%E5%AE%89%E8%A3%85FileBrowser%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/</url>
+      
+        <content type="html"><![CDATA[<p>File Browser是一款使用Golang开发的文件管理器，跨平台，免费开源，功能强大。这篇文章分享下CentOS 7手动安装File Browser的方法，熟悉下File Browser运作流程，不至于后期出现问题不知所措。</p><h2 id="下载File-Browser"><a href="#下载File-Browser" class="headerlink" title="下载File Browser"></a>下载File Browser</h2><ul><li>下载地址：<a href="https://github.com/filebrowser/filebrowser/releases" target="_blank" rel="noopener">https://github.com/filebrowser/filebrowser/releases</a></li></ul><p>下载地址中作者提供了各平台编译好的二进制文件，根据自己的平台下载解压即可，无需自行编译，以CentOS 7为例。</p><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#下载File Browser</span><span class="token function">wget</span> https://github.com/filebrowser/filebrowser/releases/download/v2.1.0/linux-amd64-filebrowser.tar.gz<span class="token comment" spellcheck="true">#解压</span><span class="token function">tar</span> -zxvf linux-amd64-filebrowser.tar.gz<span class="token comment" spellcheck="true">#移动位置</span><span class="token function">mv</span> filebrowser /usr/sbin</code></pre><h2 id="创建配置文件"><a href="#创建配置文件" class="headerlink" title="创建配置文件"></a>创建配置文件</h2><p>File Browser支持json, toml, yaml, yml格式的配置文件，以<code>json</code>格式为例，命令如下：</p><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#先创建一个目录用来存放数据库和配置文件</span><span class="token function">mkdir</span> /filebrowser/<span class="token comment" spellcheck="true">#新建配置文件</span><span class="token function">vi</span> /filebrowser/config.json</code></pre><p>复制下面的内容保存到<code>/filebrowser/config.json</code></p><pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>    <span class="token property">"address"</span><span class="token operator">:</span><span class="token string">"0.0.0.0"</span><span class="token punctuation">,</span>    <span class="token property">"database"</span><span class="token operator">:</span><span class="token string">"/filebrowser/filebrowser.db"</span><span class="token punctuation">,</span>    <span class="token property">"log"</span><span class="token operator">:</span><span class="token string">"/var/log/filebrowser.log"</span><span class="token punctuation">,</span>    <span class="token property">"port"</span><span class="token operator">:</span><span class="token number">8080</span><span class="token punctuation">,</span>    <span class="token property">"root"</span><span class="token operator">:</span><span class="token string">"/home"</span><span class="token punctuation">,</span>    <span class="token property">"username"</span><span class="token operator">:</span><span class="token string">"admin"</span><span class="token punctuation">}</span></code></pre><p>上面参数含义为如下，请根据自身情况修改。</p><ul><li>address：监听地址</li><li>database：数据库地址</li><li>log：日志文件路径</li><li>port：需要监听的端口</li><li>root：需要读取哪个目录下的文件</li><li>username：用户名</li></ul><h2 id="运行File-Browser"><a href="#运行File-Browser" class="headerlink" title="运行File Browser"></a>运行File Browser</h2><p>参数<code>-c</code>是指定File Browser配置文件路径，请根据自身情况填写路径，命令如下：</p><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#常规运行</span>filebrowser -c /etc/filebrowser/config.json</code></pre><h2 id="数据地址目录"><a href="#数据地址目录" class="headerlink" title="数据地址目录"></a>数据地址目录</h2><pre><code>/home</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>gclone和fclone转存教程</title>
       <link href="/2020/08/16/gclone%E5%92%8Cfclone%E8%BD%AC%E5%AD%98%E6%95%99%E7%A8%8B/"/>
       <url>/2020/08/16/gclone%E5%92%8Cfclone%E8%BD%AC%E5%AD%98%E6%95%99%E7%A8%8B/</url>
@@ -39,9 +64,9 @@
       
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> Telegram </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
