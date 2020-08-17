@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Centos安装MYSQL数据库</title>
+      <link href="/2020/08/17/Centos%E5%AE%89%E8%A3%85MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <url>/2020/08/17/Centos%E5%AE%89%E8%A3%85MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
+      
+        <content type="html"><![CDATA[<p>由于历史原因，如果在CentOS里运行 <code>yum install mysql</code>不会安装<code>mysql</code>数据库，而是会安装 <code>MariaDB</code>(关于<code>MySql</code>和<code>MariaDB</code>的关系，请参考<a href="https://baike.baidu.com/item/mariaDB/6466119?fr=aladdin" target="_blank" rel="noopener">百度百科</a>。在<code>CentOS</code>里安装<code>mysql</code>要稍微复杂一些。 </p><h2 id="下载rpm包"><a href="#下载rpm包" class="headerlink" title="下载rpm包"></a>下载<code>rpm</code>包</h2><ul><li>从<code>mysql</code>官网上下载<code>mysql</code>仓库 得到 <code>rpm</code>文 件</li></ul><pre class=" language-sh"><code class="language-sh">wget https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm</code></pre><h2 id="安装mysql-repository"><a href="#安装mysql-repository" class="headerlink" title="安装mysql repository"></a>安装<code>mysql repository</code></h2><ul><li>运行</li></ul><pre class=" language-sh"><code class="language-sh">yum install mysql80-community-release-el7-3.noarch.rpm</code></pre><blockquote><p>默认安装的<code>mysql</code>版本是<code>8.0</code>,而我们在开发中常用的是<code>5.7</code>版本，所以需要修改配置文件，默认</p><p>安装 <code>5.7</code>版本。使用 </p><pre class=" language-sh"><code class="language-sh">vim  /etc/yum.repos.d/mysql-community.repo</code></pre><p> 命令修改 <code>mysqlcommunity.repo</code>文件。将文件中，<code>mysql80</code>的<code>enable</code>值改为<code>0</code>,<code>mysql57</code>的</p><p><code>enable</code>值改为<code>1</code></p></blockquote><p> 运行 </p><pre><code> yum install mysql-community-server -y</code></pre><p>安装<code>mysql</code>数据库。</p><h2 id="开启数据库服务"><a href="#开启数据库服务" class="headerlink" title="开启数据库服务"></a>开启数据库服务</h2><pre><code>systemctl start|stop|restart|status mysqld</code></pre><p>在其他版本的<code>Linux</code>里，<code>root</code>用户的默认密码是空，可以不使用密码直接登录。但是在<code>CentOS7</code>里， <code>mysql</code>安装完成以后，会生成一个临时密码，我们需要通过命令查看到这个默认密码。 </p><pre><code>cat /var/log/mysqld.log |grep password</code></pre><p>首先要启动<code>mysql</code> 才能看到密码</p><pre><code>systemctl startmysqld</code></pre><p><img src="rootpassword.png" alt=""></p><h2 id="登陆数据库"><a href="#登陆数据库" class="headerlink" title="登陆数据库"></a>登陆数据库</h2><pre class=" language-sh"><code class="language-sh">mysql -uroot -p rl:-Waxnr6v!  # 填你查看到的密码</code></pre><p>设置root用户密码 数据库连接成功以后，因为此时使用的是root用户的临时密码，此时无法进行任何的操作，需要先修改 root用户的密码。</p><pre class=" language-mysql"><code class="language-mysql">alter user root@localhost identified with mysql_native_password by '你的密码';</code></pre><blockquote><p>第一次使用 <code>root</code> 连接后最好添加一个新的用户来操作。出于安全考虑，日常开发中最好不要使用 </p><p><code>root</code></p></blockquote><pre class=" language-mysql"><code class="language-mysql">-- 创建新用户，并设置密码-- *.* 代表该用户可以操作任何库、任何表-- 主机名可以使用 '%', 代表允许该用户从任何机器登陆GRANT ALL PRIVILEGES on *.* to '用户名'@'localhost' IDENTIFIED BY "密码" WITH GRANT OPTION;-- 刷新使权限生效flush privileges;</code></pre><ul><li>创建一个允许任意主机登录的账号。</li></ul><pre class=" language-mysql"><code class="language-mysql">GRANT ALL PRIVILEGES on *.* to 'zhangsan'@'%' IDENTIFIED BY "密码" WITH GRANT OPTION;-- 刷新使权限生效flush privileges;</code></pre><ul><li>修改<code>mysql</code>配置文件（不同操作系统，不同<code>MySql</code>版本，配置文件存储不同，ubuntu18.04配置文 件保存在<code>/etc/mysql/mysql.conf.d/mysqld.cnf</code>; <code>Centos7.7</code> 配合文件保存在 <code>/etc/my.cnf</code>）</li></ul><pre><code> vim /etc/my.cnf</code></pre><p>将 <code>bind-address=127.0.0.1</code>代码注释掉（如果这段代码存在的话），让计算机允许<code>mysql</code>远程登录。</p><p>打开服务器的 3306 端口。 </p><p>使用客户端远程登录到<code>mysql</code>数据库。</p><pre><code>mysql -uzhangsan -h 远端服务器地址 -P 3306 -p</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>CentOS7手动安装FileBrowser文件管理器</title>
       <link href="/2020/08/16/CentOS7%E6%89%8B%E5%8A%A8%E5%AE%89%E8%A3%85FileBrowser%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/"/>
       <url>/2020/08/16/CentOS7%E6%89%8B%E5%8A%A8%E5%AE%89%E8%A3%85FileBrowser%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/</url>

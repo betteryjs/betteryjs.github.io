@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="关于pip3安装psutil报错, 黎北辰">
+    <meta name="keywords" content="Centos安装MYSQL数据库, 黎北辰">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>关于pip3安装psutil报错 | 黎北辰</title>
+    <title>Centos安装MYSQL数据库 | 黎北辰</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">关于pip3安装psutil报错</h1>
+                    <h1 class="description center-align post-title">Centos安装MYSQL数据库</h1>
                 </div>
             </div>
         </div>
@@ -434,10 +434,6 @@
                                 <span class="chip bg-color">Linux</span>
                             </a>
                         
-                            <a href="/tags/Python/">
-                                <span class="chip bg-color">Python</span>
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -459,7 +455,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-08-15
+                    2020-08-17
                 </div>
                 
 
@@ -468,7 +464,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    101
+                    648
                 </div>
                 
 
@@ -485,31 +481,53 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h2><pre class=" language-sh"><code class="language-sh">psutil/_psutil_common.c:9:20: fatal error: Python.h: No such file or directory
-     #include <Python.h>
-                        ^
-    compilation terminated.
-    error: command 'gcc' failed with exit status 1
-</code></pre>
-<h2 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h2><ul>
-<li>检查<code>gcc</code>是否安装</li>
+                <p>由于历史原因，如果在CentOS里运行 <code>yum install mysql</code>不会安装<code>mysql</code>数据库，而是会安装 <code>MariaDB</code>(关于<code>MySql</code>和<code>MariaDB</code>的关系，请参考<a href="https://baike.baidu.com/item/mariaDB/6466119?fr=aladdin" target="_blank" rel="noopener">百度百科</a>。在<code>CentOS</code>里安装<code>mysql</code>要稍微复杂一些。 </p>
+<h2 id="下载rpm包"><a href="#下载rpm包" class="headerlink" title="下载rpm包"></a>下载<code>rpm</code>包</h2><ul>
+<li>从<code>mysql</code>官网上下载<code>mysql</code>仓库 得到 <code>rpm</code>文 件</li>
 </ul>
-<pre class=" language-sh"><code class="language-sh">sudo -y yum install gcc </code></pre>
+<pre class=" language-sh"><code class="language-sh">wget https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm</code></pre>
+<h2 id="安装mysql-repository"><a href="#安装mysql-repository" class="headerlink" title="安装mysql repository"></a>安装<code>mysql repository</code></h2><ul>
+<li>运行</li>
+</ul>
+<pre class=" language-sh"><code class="language-sh">yum install mysql80-community-release-el7-3.noarch.rpm</code></pre>
+<blockquote>
+<p>默认安装的<code>mysql</code>版本是<code>8.0</code>,而我们在开发中常用的是<code>5.7</code>版本，所以需要修改配置文件，默认</p>
+<p>安装 <code>5.7</code>版本。使用 </p>
+<pre class=" language-sh"><code class="language-sh">vim  /etc/yum.repos.d/mysql-community.repo</code></pre>
+<p> 命令修改 <code>mysqlcommunity.repo</code>文件。将文件中，<code>mysql80</code>的<code>enable</code>值改为<code>0</code>,<code>mysql57</code>的</p>
+<p><code>enable</code>值改为<code>1</code></p>
+</blockquote>
+<p> 运行 </p>
+<pre><code> yum install mysql-community-server -y</code></pre><p>安装<code>mysql</code>数据库。</p>
+<h2 id="开启数据库服务"><a href="#开启数据库服务" class="headerlink" title="开启数据库服务"></a>开启数据库服务</h2><pre><code>systemctl start|stop|restart|status mysqld</code></pre><p>在其他版本的<code>Linux</code>里，<code>root</code>用户的默认密码是空，可以不使用密码直接登录。但是在<code>CentOS7</code>里， <code>mysql</code>安装完成以后，会生成一个临时密码，我们需要通过命令查看到这个默认密码。 </p>
+<pre><code>cat /var/log/mysqld.log |grep password</code></pre><p>首先要启动<code>mysql</code> 才能看到密码</p>
+<pre><code>systemctl startmysqld</code></pre><p><img src="rootpassword.png" alt=""></p>
+<h2 id="登陆数据库"><a href="#登陆数据库" class="headerlink" title="登陆数据库"></a>登陆数据库</h2><pre class=" language-sh"><code class="language-sh">mysql -uroot -p rl:-Waxnr6v!  # 填你查看到的密码</code></pre>
+<p>设置root用户密码 数据库连接成功以后，因为此时使用的是root用户的临时密码，此时无法进行任何的操作，需要先修改 root用户的密码。</p>
+<pre class=" language-mysql"><code class="language-mysql">alter user root@localhost identified with mysql_native_password by '你的密码';</code></pre>
+<blockquote>
+<p>第一次使用 <code>root</code> 连接后最好添加一个新的用户来操作。出于安全考虑，日常开发中最好不要使用 </p>
+<p><code>root</code></p>
+</blockquote>
+<pre class=" language-mysql"><code class="language-mysql">-- 创建新用户，并设置密码
+-- *.* 代表该用户可以操作任何库、任何表
+-- 主机名可以使用 '%', 代表允许该用户从任何机器登陆
+GRANT ALL PRIVILEGES on *.* to '用户名'@'localhost' IDENTIFIED BY "密码" WITH GRANT OPTION;
+-- 刷新使权限生效
+flush privileges;</code></pre>
 <ul>
-<li>再检查<code>python3-devel</code> 或者<code>python2-devel</code>是否安装</li>
+<li>创建一个允许任意主机登录的账号。</li>
 </ul>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ul>
-<li>如果你使用的是<code>python2</code></li>
-</ul>
-<pre class=" language-sh"><code class="language-sh">sudo yum install python2-devel</code></pre>
+<pre class=" language-mysql"><code class="language-mysql">GRANT ALL PRIVILEGES on *.* to 'zhangsan'@'%' IDENTIFIED BY "密码" WITH GRANT OPTION;
+-- 刷新使权限生效
+flush privileges;</code></pre>
 <ul>
-<li>如果你使用的是<code>python3</code></li>
+<li>修改<code>mysql</code>配置文件（不同操作系统，不同<code>MySql</code>版本，配置文件存储不同，ubuntu18.04配置文 件保存在<code>/etc/mysql/mysql.conf.d/mysqld.cnf</code>; <code>Centos7.7</code> 配合文件保存在 <code>/etc/my.cnf</code>）</li>
 </ul>
-<pre class=" language-sh"><code class="language-sh">sudo yum install python3-devel</code></pre>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
-<li>直接使用 <code>sudo yum install python-devel</code> 没有作用</li>
-</ul>
-
+<pre><code> vim /etc/my.cnf</code></pre><p>将 <code>bind-address=127.0.0.1</code>代码注释掉（如果这段代码存在的话），让计算机允许<code>mysql</code>远程登录。</p>
+<p>打开服务器的 3306 端口。 </p>
+<p>使用客户端远程登录到<code>mysql</code>数据库。</p>
+<pre><code>mysql -uzhangsan -h 远端服务器地址 -P 3306 -p</code></pre>
             </div>
             <hr/>
 
@@ -534,7 +552,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://betteryjs.top/2020/08/15/%E5%85%B3%E4%BA%8Epip3%E5%AE%89%E8%A3%85psutil%E6%8A%A5%E9%94%99/">http://betteryjs.top/2020/08/15/%E5%85%B3%E4%BA%8Epip3%E5%AE%89%E8%A3%85psutil%E6%8A%A5%E9%94%99/</a>
+                    <a href="http://betteryjs.top/2020/08/17/Centos%E5%AE%89%E8%A3%85MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93/">http://betteryjs.top/2020/08/17/Centos%E5%AE%89%E8%A3%85MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -574,10 +592,6 @@
                             
                                 <a href="/tags/Linux/">
                                     <span class="chip bg-color">Linux</span>
-                                </a>
-                            
-                                <a href="/tags/Python/">
-                                    <span class="chip bg-color">Python</span>
                                 </a>
                             
                         </div>
@@ -641,49 +655,48 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/08/15/Telegram%E4%BA%BA%E5%BD%A2bot/">
+                <a href="/2020/08/17/Centos%E5%AE%89%E8%A3%85MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/medias/featureimages/21.jpg" class="responsive-img" alt="把自己变成Telegram人形bot">
+                        <img src="https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/medias/featureimages/19.jpg" class="responsive-img" alt="Centos安装MYSQL数据库">
                         
-                        <span class="card-title">把自己变成Telegram人形bot</span>
+                        <span class="card-title">Centos安装MYSQL数据库</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            前言
-项目名字叫 pagermaid，这是一个能够把自己变成 bot 的项目，功能
-很多，比如一键偷图，自动回复等等，命令方式 - 命令（命令发送 - help 获取），比如偷别人的
-贴纸就回复贴纸-sticker就可以偷到手了，更多功能输
+                            在 Centos 中安装mysql57 并在远程主机进行登陆
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-17
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            yjs
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
                     <a href="/tags/Linux/">
                         <span class="chip bg-color">Linux</span>
-                    </a>
-                    
-                    <a href="/tags/Telegram/">
-                        <span class="chip bg-color">Telegram</span>
                     </a>
                     
                 </div>
@@ -697,24 +710,25 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/08/10/centos7%E5%AE%89%E8%A3%85pycharm2020-2%E4%B8%93%E4%B8%9A%E7%89%88/">
+                <a href="/2020/08/16/CentOS7%E6%89%8B%E5%8A%A8%E5%AE%89%E8%A3%85FileBrowser%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/medias/featureimages/10.jpg" class="responsive-img" alt="centos7安装pycharm2020.2专业版">
+                        <img src="https://cdn.jsdelivr.net/gh/betteryjs/betteryjs.github.io/medias/featureimages/20.jpg" class="responsive-img" alt="CentOS7手动安装FileBrowser文件管理器">
                         
-                        <span class="card-title">centos7安装pycharm2020.2专业版</span>
+                        <span class="card-title">CentOS7手动安装FileBrowser文件管理器</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            centos7安装pycharm2020.2专业版
+                            File Browser是一款使用Golang开发的文件管理器，跨平台，免费开源，功能强大。这篇文章分享下CentOS 7手动安装File Browser的方法，熟悉下File Browser运作流程，不至于后期出现问题不知所措。
+下载Fi
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-16
                             </span>
                         <span class="publish-author">
                             
@@ -733,10 +747,6 @@
                     
                     <a href="/tags/Linux/">
                         <span class="chip bg-color">Linux</span>
-                    </a>
-                    
-                    <a href="/tags/Python/">
-                        <span class="chip bg-color">Python</span>
                     </a>
                     
                 </div>
