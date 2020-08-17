@@ -464,7 +464,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    366
+                    365
                 </div>
                 
 
@@ -496,7 +496,7 @@
 <pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#先创建一个目录用来存放数据库和配置文件</span>
 <span class="token function">mkdir</span> /filebrowser/
 <span class="token comment" spellcheck="true">#新建配置文件</span>
-<span class="token function">vi</span> /filebrowser/config.json</code></pre>
+vim /filebrowser/config.json</code></pre>
 <p>复制下面的内容保存到<code>/filebrowser/config.json</code></p>
 <pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
     <span class="token property">"address"</span><span class="token operator">:</span><span class="token string">"0.0.0.0"</span><span class="token punctuation">,</span>
@@ -517,7 +517,7 @@
 </ul>
 <h2 id="运行File-Browser"><a href="#运行File-Browser" class="headerlink" title="运行File Browser"></a>运行File Browser</h2><p>参数<code>-c</code>是指定File Browser配置文件路径，请根据自身情况填写路径，命令如下：</p>
 <pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#常规运行</span>
-filebrowser -c /etc/filebrowser/config.json</code></pre>
+filebrowser -c /filebrowser/config.json</code></pre>
 <h2 id="数据地址目录"><a href="#数据地址目录" class="headerlink" title="数据地址目录"></a>数据地址目录</h2><pre><code>/home</code></pre>
             </div>
             <hr/>
